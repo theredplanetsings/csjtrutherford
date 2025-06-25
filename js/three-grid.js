@@ -79,3 +79,16 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
+function resizeGrid() {
+  const width = hero.offsetWidth;
+  const height = hero.offsetHeight;
+  renderer.setSize(width, height);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+}
+
+window.addEventListener('resize', resizeGrid);
+
+// After hero and renderer are created, call resizeGrid to ensure correct initial sizing
+resizeGrid();
