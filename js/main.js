@@ -127,14 +127,27 @@ if (contactForm) {
 }
 
 // Typing effect for hero title
-function typeWriter(element, text, speed = 100) {
+function typeWriter(element, text, speed = 80) {
     let i = 0;
     element.innerHTML = '';
+    element.classList.add('typing');
     
     function type() {
         if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
+            if (text.charAt(i) === '<') {
+                // Handle HTML tags
+                let tagEnd = text.indexOf('>', i);
+                if (tagEnd !== -1) {
+                    element.innerHTML += text.substring(i, tagEnd + 1);
+                    i = tagEnd + 1;
+                } else {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                }
+            } else {
+                element.innerHTML += text.charAt(i);
+                i++;
+            }
             setTimeout(type, speed);
         }
     }
@@ -146,10 +159,10 @@ function typeWriter(element, text, speed = 100) {
 document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
-        const originalText = heroTitle.textContent;
+        const originalHTML = heroTitle.innerHTML;
         setTimeout(() => {
-            typeWriter(heroTitle, originalText, 50);
-        }, 500);
+            typeWriter(heroTitle, originalHTML, 50);
+        }, 800);
     }
 });
 
