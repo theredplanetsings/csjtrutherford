@@ -160,9 +160,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const originalHTML = heroTitle.innerHTML;
-        setTimeout(() => {
-            typeWriter(heroTitle, originalHTML, 50);
-        }, 800);
+        
+        // Wait for fonts to load before starting animation
+        document.fonts.ready.then(() => {
+            setTimeout(() => {
+                typeWriter(heroTitle, originalHTML, 50);
+            }, 500);
+        }).catch(() => {
+            // Fallback if font loading detection fails
+            setTimeout(() => {
+                typeWriter(heroTitle, originalHTML, 50);
+            }, 1000);
+        });
     }
 });
 
