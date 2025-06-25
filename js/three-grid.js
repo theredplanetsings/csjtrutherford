@@ -1,5 +1,5 @@
 // Three.js interactive grid background for hero section
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.module.js';
+import * as THREE from './three.module.js';
 
 const hero = document.querySelector('.hero');
 const width = hero.offsetWidth;
