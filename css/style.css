@@ -153,9 +153,10 @@ body {
 
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 1rem;
     line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .highlight {
@@ -163,22 +164,28 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-weight: 900;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 1rem;
-    opacity: 0.9;
+    opacity: 1;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-description {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto 2rem;
-    opacity: 0.9;
+    opacity: 1;
     line-height: 1.8;
     text-align: center;
+    font-weight: 500;
+    color: #f8fafc;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .hero-buttons {
