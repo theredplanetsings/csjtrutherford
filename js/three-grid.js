@@ -21,29 +21,41 @@ const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
 camera.position.z = 50;
 
 // Grid parameters
-const gridRows = 40; // increased from 16
-const gridCols = 80; // increased from 32
+let gridRows = 40; // increased from 16
+let gridCols = 80; // increased from 32
 const spacing = 1.2; // closer together
-const points = [];
-const geometry = new THREE.BufferGeometry();
-const positions = [];
-const basePositions = [];
+let points = [];
+let geometry, material, pointCloud, positions, basePositions;
 
-for (let y = 0; y < gridRows; y++) {
-  for (let x = 0; x < gridCols; x++) {
-    // Center grid so (0,0) is at the center of the hero section
-    const px = (x - (gridCols - 1) / 2) * spacing;
-    const py = (y - (gridRows - 1) / 2) * spacing;
-    positions.push(px, py, 0);
-    basePositions.push(px, py, 0);
-    points.push({ x: px, y: py, z: 0 });
+function createGrid() {
+  // Remove old pointCloud if it exists
+  if (pointCloud) {
+    scene.remove(pointCloud);
+    geometry.dispose();
+    material.dispose();
   }
+  points = [];
+  positions = [];
+  basePositions = [];
+  geometry = new THREE.BufferGeometry();
+  for (let y = 0; y < gridRows; y++) {
+    for (let x = 0; x < gridCols; x++) {
+      // Center grid so (0,0) is at the center of the hero section
+      const px = (x - (gridCols - 1) / 2) * spacing;
+      const py = (y - (gridRows - 1) / 2) * spacing;
+      positions.push(px, py, 0);
+      basePositions.push(px, py, 0);
+      points.push({ x: px, y: py, z: 0 });
+    }
+  }
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, opacity: 0.5, transparent: true });
+  pointCloud = new THREE.Points(geometry, material);
+  scene.add(pointCloud);
 }
-geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
 
-const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, opacity: 0.5, transparent: true });
-const pointCloud = new THREE.Points(geometry, material);
-scene.add(pointCloud);
+// Initial grid creation
+createGrid();
 
 // Mouse interaction
 let mouse = { x: 0, y: 0 };
@@ -86,6 +98,7 @@ function resizeGrid() {
   renderer.setSize(width, height);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
+  createGrid(); // Regenerate grid to fit new size
 }
 
 window.addEventListener('resize', resizeGrid);
