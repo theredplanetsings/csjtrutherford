@@ -82,13 +82,32 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.project-card, .skill-category, .stat');
+    const animatedElements = document.querySelectorAll('.project-card, .skill-category, .stat, .education-item, .experience-item, .volunteering-item, .organization-item, .language-item, .honor-item');
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
+    });
+    
+    // Animate language proficiency bars when they come into view
+    const languageBars = document.querySelectorAll('.proficiency-fill');
+    languageBars.forEach(bar => {
+        const level = bar.getAttribute('data-level');
+        
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.width = level + '%';
+                    }, 300);
+                    barObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        barObserver.observe(bar);
     });
 });
 
