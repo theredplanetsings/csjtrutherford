@@ -70,6 +70,7 @@ const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -126,7 +127,18 @@ if (contactForm) {
                 }
             });
             
-            const result = await response.json();
+            // Get response text for debugging
+            const responseText = await response.text();
+            console.log('Response status:', response.status);
+            console.log('Response text:', responseText);
+            
+            let result;
+            try {
+                result = JSON.parse(responseText);
+            } catch (parseError) {
+                console.error('Failed to parse response as JSON:', parseError);
+                throw new Error(`Server returned non-JSON response (${response.status}): ${responseText.substring(0, 200)}`);
+            }
             
             if (response.ok) {
                 // Success
@@ -134,18 +146,28 @@ if (contactForm) {
                 this.reset();
             } else {
                 // Handle different error types
-                if (result.errors) {
+                console.error('Form submission failed:', result);
+                
+                if (result.errors && Array.isArray(result.errors)) {
                     // Validation errors (including CAPTCHA)
-                    const errorMessages = result.errors.map(error => error.message).join(', ');
-                    alert(`Please fix the following: ${errorMessages}`);
+                    const errorMessages = result.errors.map(error => {
+                        if (typeof error === 'string') return error;
+                        if (error.message) return error.message;
+                        if (error.field) return `${error.field}: ${error.code || 'validation error'}`;
+                        return JSON.stringify(error);
+                    }).join('\n');
+                    alert(`Please fix the following issues:\n${errorMessages}`);
+                } else if (result.error) {
+                    // Single error message
+                    alert(`Error: ${result.error}`);
                 } else {
-                    // General error
-                    alert('Sorry, there was an error sending your message. Please try again or email me directly.');
+                    // Unknown error format
+                    alert(`Sorry, there was an error (${response.status}): ${JSON.stringify(result)}`);
                 }
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Sorry, there was an error sending your message. Please try emailing me directly at chrutherford@davidson.edu');
+            console.error('Network or parsing error:', error);
+            alert(`Sorry, there was an error sending your message: ${error.message}\n\nPlease try emailing me directly at chrutherford@davidson.edu`);
         } finally {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
