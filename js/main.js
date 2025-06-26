@@ -155,7 +155,7 @@ function typeWriter(element, text, speed = 80) {
     type();
 }
 
-// Initialize typing effect on page load
+// Initialise typing effect on page load
 document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
