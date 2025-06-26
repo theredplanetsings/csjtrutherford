@@ -355,6 +355,202 @@ body {
     transform: translateX(-50%);
 }
 
+/* Education Section */
+.education {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+.education-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.education-item {
+    background: rgba(220, 38, 38, 0.05);
+    border-left: 4px solid #dc2626;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.education-item:hover {
+    background: rgba(220, 38, 38, 0.08);
+    transform: translateX(5px);
+}
+
+.education-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.education-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.education-location {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.education-date {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+.education-degree {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.education-degree strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.education-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.detail-section h4 {
+    color: #dc2626;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.detail-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-section li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.detail-section li:before {
+    content: '•';
+    color: #dc2626;
+    position: absolute;
+    left: 0;
+}
+
+.coursework-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.course-tag {
+    background: rgba(220, 38, 38, 0.1);
+    color: #fca5a5;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    transition: all 0.3s ease;
+}
+
+.course-tag:hover {
+    background: rgba(220, 38, 38, 0.2);
+    border-color: #dc2626;
+}
+
+/* Experience Section */
+.experience {
+    padding: 5rem 0;
+}
+
+.experience-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.experience-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+    border-color: rgba(220, 38, 38, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
+}
+
+.experience-header {
+    margin-bottom: 1.5rem;
+}
+
+.experience-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.experience-company {
+    font-size: 1.1rem;
+    color: #dc2626;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.experience-location,
+.experience-date {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+.experience-type {
+    background: rgba(220, 38, 38, 0.1);
+    color: #fca5a5;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.experience-description ul {
+    list-style: none;
+    padding: 0;
+}
+
+.experience-description li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+}
+
+.experience-description li:before {
+    content: '▶';
+    color: #dc2626;
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+}
+
 /* Skills Section */
 .skills {
     padding: 5rem 0;
@@ -400,6 +596,287 @@ body {
     border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 500;
+}
+
+/* Volunteering & Leadership Section */
+.volunteering {
+    padding: 5rem 0;
+    background: #1a1a1a;
+}
+
+.volunteering-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.volunteering-item {
+    background: #262626;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(220, 38, 38, 0.1);
+}
+
+.volunteering-item:hover {
+    transform: translateY(-5px);
+}
+
+.volunteering-header {
+    margin-bottom: 1rem;
+}
+
+.volunteering-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.volunteering-organization {
+    color: #dc2626;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.volunteering-date {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.volunteering-description {
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+.achievement-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.achievement-tag {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Organizations Section */
+.organizations {
+    padding: 5rem 0;
+}
+
+.organizations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.organization-item {
+    background: #262626;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.organization-item:hover {
+    transform: translateY(-5px);
+}
+
+.organization-icon {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.organization-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.organization-type {
+    color: #dc2626;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+
+.organization-description {
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+/* Languages Section */
+.languages {
+    padding: 5rem 0;
+    background: #1a1a1a;
+}
+
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.language-item {
+    background: #262626;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    width: 100%;
+}
+
+.language-item:hover {
+    transform: translateY(-5px);
+}
+
+.language-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.language-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.proficiency-level {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.proficiency-level.native {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    color: white;
+}
+
+.proficiency-level.intermediate {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+}
+
+.proficiency-bar {
+    width: 100%;
+    height: 8px;
+    background: #404040;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.proficiency-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    border-radius: 4px;
+    transition: width 1s ease;
+    width: 0%;
+}
+
+.language-description {
+    color: #e2e8f0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+/* Honors & Awards Section */
+.honors {
+    padding: 5rem 0;
+}
+
+.honors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.honor-item {
+    background: #262626;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.honor-item:hover {
+    transform: translateY(-5px);
+}
+
+.honor-item.academic .honor-icon {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+}
+
+.honor-item.leadership .honor-icon {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.honor-icon {
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.honor-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.honor-organization {
+    color: #dc2626;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.honor-date {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+.honor-description {
+    color: #e2e8f0;
+    line-height: 1.6;
 }
 
 /* Projects Section */
@@ -797,6 +1274,28 @@ input, textarea, select {
         justify-content: center;
     }
     
+    .education-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .education-date {
+        margin-left: 0;
+    }
+    
+    .experience-item {
+        padding: 1.5rem;
+    }
+    
+    .coursework-tags {
+        justify-content: flex-start;
+    }
+    
     .contact-content {
         grid-template-columns: 1fr;
     }
@@ -808,6 +1307,22 @@ input, textarea, select {
     
     .project-card.featured {
         grid-column: 1;
+    }
+    
+    .volunteering-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .organizations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .languages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .honors-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -840,5 +1355,32 @@ input, textarea, select {
     
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .volunteering-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .organizations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .languages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .honors-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .organization-item,
+    .honor-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .organization-icon,
+    .honor-icon {
+        align-self: center;
     }
 }
