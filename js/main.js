@@ -92,86 +92,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Contact form handling
+// Contact form handling - Let Formspree handle everything
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
+    // Just basic client-side validation, no form submission handling
+    contactForm.addEventListener('submit', function(e) {
+        const name = this.querySelector('input[name="name"]').value.trim();
+        const email = this.querySelector('input[name="email"]').value.trim();
+        const message = this.querySelector('textarea[name="message"]').value.trim();
         
-        // Get form data
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-        
-        // Simple validation
+        // Basic validation
         if (!name || !email || !message) {
+            e.preventDefault();
             alert('Please fill in all fields.');
-            return;
+            return false;
         }
         
-        // Update button state
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            e.preventDefault();
+            alert('Please enter a valid email address.');
+            return false;
+        }
         
+        // Show sending state but let form submit naturally
+        const submitBtn = this.querySelector('button[type="submit"]');
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
-        try {
-            // Submit to Formspree
-            const response = await fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            
-            // Get response text for debugging
-            const responseText = await response.text();
-            console.log('Response status:', response.status);
-            console.log('Response text:', responseText);
-            
-            let result;
-            try {
-                result = JSON.parse(responseText);
-            } catch (parseError) {
-                console.error('Failed to parse response as JSON:', parseError);
-                throw new Error(`Server returned non-JSON response (${response.status}): ${responseText.substring(0, 200)}`);
-            }
-            
-            if (response.ok) {
-                // Success
-                alert('Thank you for your message! I\'ll get back to you soon.');
-                this.reset();
-            } else {
-                // Handle different error types
-                console.error('Form submission failed:', result);
-                
-                if (result.errors && Array.isArray(result.errors)) {
-                    // Validation errors (including CAPTCHA)
-                    const errorMessages = result.errors.map(error => {
-                        if (typeof error === 'string') return error;
-                        if (error.message) return error.message;
-                        if (error.field) return `${error.field}: ${error.code || 'validation error'}`;
-                        return JSON.stringify(error);
-                    }).join('\n');
-                    alert(`Please fix the following issues:\n${errorMessages}`);
-                } else if (result.error) {
-                    // Single error message
-                    alert(`Error: ${result.error}`);
-                } else {
-                    // Unknown error format
-                    alert(`Sorry, there was an error (${response.status}): ${JSON.stringify(result)}`);
-                }
-            }
-        } catch (error) {
-            console.error('Network or parsing error:', error);
-            alert(`Sorry, there was an error sending your message: ${error.message}\n\nPlease try emailing me directly at chrutherford@davidson.edu`);
-        } finally {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
+        // Let form submit to Formspree - no preventDefault()
+        return true;
     });
 }
 
