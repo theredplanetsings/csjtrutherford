@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Contact form handling
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         // Get form data
@@ -110,19 +110,47 @@ if (contactForm) {
             return;
         }
         
-        // Simulate form submission
+        // Update button state
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
-        setTimeout(() => {
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
+        try {
+            // Submit to Formspree
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Success
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                this.reset();
+            } else {
+                // Handle different error types
+                if (result.errors) {
+                    // Validation errors (including CAPTCHA)
+                    const errorMessages = result.errors.map(error => error.message).join(', ');
+                    alert(`Please fix the following: ${errorMessages}`);
+                } else {
+                    // General error
+                    alert('Sorry, there was an error sending your message. Please try again or email me directly.');
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Sorry, there was an error sending your message. Please try emailing me directly at chrutherford@davidson.edu');
+        } finally {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-        }, 1500);
+        }
     });
 }
 
