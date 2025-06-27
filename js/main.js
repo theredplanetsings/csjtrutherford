@@ -82,7 +82,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.project-card, .skill-category, .stat, .education-item, .experience-item, .volunteering-item, .organization-item, .language-item, .honor-item');
+    const animatedElements = document.querySelectorAll('.project-card, .skill-category, .stat, .education-item, .experience-item, .volunteering-item, .organization-item, .language-item, .honor-item, .writing-item');
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';
@@ -352,4 +352,142 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
     if (cursor) cursor.style.display = 'none';
     if (cursorFollower) cursorFollower.style.display = 'none';
     document.documentElement.style.cursor = 'auto';
+}
+
+// PDF Modal functionality
+let currentZoom = 100;
+let currentPDFUrl = '';
+
+function openPDFModal(pdfUrl, title) {
+    const modal = document.getElementById('pdfModal');
+    const pdfEmbed = document.getElementById('pdfEmbed');
+    const pdfFallback = document.getElementById('pdfFallback');
+    const modalTitle = document.getElementById('pdfModalTitle');
+    const fallbackDownload = document.getElementById('fallbackDownload');
+    
+    currentPDFUrl = pdfUrl;
+    modalTitle.textContent = title;
+    
+    // Reset zoom
+    currentZoom = 100;
+    updateZoomDisplay();
+    
+    // Try to load PDF
+    pdfEmbed.src = pdfUrl;
+    pdfEmbed.style.display = 'block';
+    pdfFallback.style.display = 'none';
+    
+    // Set up fallback download
+    fallbackDownload.href = pdfUrl;
+    fallbackDownload.download = pdfUrl.split('/').pop();
+    
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Handle PDF load error
+    pdfEmbed.onerror = function() {
+        pdfEmbed.style.display = 'none';
+        pdfFallback.style.display = 'flex';
+    };
+    
+    // Setup download button
+    const downloadBtn = document.getElementById('downloadPDF');
+    downloadBtn.onclick = function() {
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = pdfUrl.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+}
+
+function closePDFModal() {
+    const modal = document.getElementById('pdfModal');
+    const pdfEmbed = document.getElementById('pdfEmbed');
+    
+    modal.classList.remove('active', 'fullscreen');
+    document.body.style.overflow = 'auto';
+    
+    // Clear PDF source
+    setTimeout(() => {
+        pdfEmbed.src = '';
+    }, 300);
+}
+
+function updateZoomDisplay() {
+    document.getElementById('zoomLevel').textContent = currentZoom + '%';
+}
+
+// PDF Modal Controls
+document.addEventListener('DOMContentLoaded', function() {
+    const zoomInBtn = document.getElementById('zoomIn');
+    const zoomOutBtn = document.getElementById('zoomOut');
+    const fullscreenBtn = document.getElementById('fullscreen');
+    const pdfContainer = document.querySelector('.pdf-container');
+    const modal = document.getElementById('pdfModal');
+    
+    // Zoom In
+    zoomInBtn.addEventListener('click', function() {
+        if (currentZoom < 200) {
+            currentZoom += 25;
+            updateZoomDisplay();
+            applyZoom();
+        }
+    });
+    
+    // Zoom Out
+    zoomOutBtn.addEventListener('click', function() {
+        if (currentZoom > 50) {
+            currentZoom -= 25;
+            updateZoomDisplay();
+            applyZoom();
+        }
+    });
+    
+    // Fullscreen Toggle
+    fullscreenBtn.addEventListener('click', function() {
+        modal.classList.toggle('fullscreen');
+        const icon = fullscreenBtn.querySelector('i');
+        
+        if (modal.classList.contains('fullscreen')) {
+            icon.className = 'fas fa-compress';
+            fullscreenBtn.title = 'Exit Fullscreen';
+        } else {
+            icon.className = 'fas fa-expand';
+            fullscreenBtn.title = 'Fullscreen';
+        }
+    });
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closePDFModal();
+        }
+    });
+    
+    // Prevent modal from closing when clicking inside the content
+    document.querySelector('.pdf-modal-content').addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
+
+function applyZoom() {
+    const pdfEmbed = document.getElementById('pdfEmbed');
+    const container = document.querySelector('.pdf-container');
+    
+    if (currentZoom === 100) {
+        pdfEmbed.style.transform = 'none';
+        pdfEmbed.style.width = '100%';
+        pdfEmbed.style.height = '100%';
+        container.style.overflow = 'hidden';
+    } else {
+        const scale = currentZoom / 100;
+        pdfEmbed.style.transform = `scale(${scale})`;
+        pdfEmbed.style.transformOrigin = 'top left';
+        pdfEmbed.style.width = (100 / scale) + '%';
+        pdfEmbed.style.height = (100 / scale) + '%';
+        container.style.overflow = 'auto';
+    }
 }
