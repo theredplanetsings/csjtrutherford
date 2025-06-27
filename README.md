@@ -15,7 +15,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Fully responsive design** optimised for desktop and mobile
 - **Working contact form** with Formspree integration and email delivery
 - **PDF modal viewer** with zoom controls, fullscreen mode, and download functionality
-- **Comprehensive content sections** including education, experience, volunteering, organizations, languages, honors, and writing samples
+- **Comprehensive content sections** including education, experience, volunteering, organisations, languages, honors, and writing samples
 - **Project showcase** with live demos and GitHub links
 - **Skills categorisation** including programming languages, technologies, and soft skills
 - **Timeline layouts** for education and professional experience
@@ -51,7 +51,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Experience** - Professional roles including IT internship at Paradigm Companies, research at College Crisis Initiative, NCAA Division I wrestling, and officiating
 - **Skills** - Technical and soft skills organized by category (Languages, Libraries & Technologies, Tools & Frameworks, Soft Skills including multilingual capabilities)
 - **Volunteering & Leadership** - Eagle Scout, Young Marines (Gunnery Sergeant), coaching, and community service with achievement recognition
-- **Organizations** - Mensa Society and QuestBridge membership with detailed descriptions
+- **Organisations** - Mensa Society and QuestBridge membership with detailed descriptions
 - **Languages** - English (native), Russian (C1), Azerbaijani (B1) with visual proficiency indicators and learning context
 - **Honors, Awards, & Certifications** - Academic scholarships (Gilman Scholar), leadership recognition (Young Marine of the Year), language certifications (ACTFL OPI), and achievements with credential verification links
 - **Writing Samples** - Academic papers on international relations (Russia-Ukraine War analysis) and financial markets (Housing Financialisation) with integrated PDF viewer
@@ -85,7 +85,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Loading States:** Font loading detection and smooth animation timing
 - **Scroll Animations:** Intersection observer-based animations for section reveals
 
-### **Content Organization**
+### **Content Organi0zation**
 - **Comprehensive Sections:** Detailed education (3 institutions), experience (5 professional roles), volunteering (4 major commitments), and achievements
 - **Skill Categorization:** Technical skills organized by programming languages (Python, C/C++, JavaScript, etc.), libraries & technologies (React, Node.js, Three.js, etc.), tools & frameworks (Microsoft 365, Git, Azure, etc.), and soft skills including multilingual capabilities
 - **Language Proficiency:** Visual indicators for multilingual capabilities (English native, Russian C1, Azerbaijani B1) with learning context
@@ -145,7 +145,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Education:** Add or modify educational institutions, degrees, and coursework
 - **Experience:** Update professional roles, responsibilities, and achievements
 - **Skills:** Edit the skills categories and tags to match your expertise
-- **Volunteering:** Add leadership roles, community service, and organizational involvement
+- **Volunteering:** Add leadership roles, community service, and organisational involvement
 - **Languages:** Update language proficiency levels and descriptions
 - **Honors:** Add academic awards, scholarships, certifications, and recognition with credential verification links
 - **Writing Samples:** Add academic papers, research documents, and professional writing
