@@ -878,6 +878,27 @@ body {
     color: #e2e8f0;
     line-height: 1.6;
 }
+
+.honor-item.certification .honor-icon {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+}
+
+.honor-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+.btn-outline.btn-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
+}
 /* Writing Samples Section */
 .writing {
     padding: 5rem 0;
