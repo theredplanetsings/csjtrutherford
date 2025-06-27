@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-This is the personal portfolio website of theredplanetsings.
+Professional portfolio website showcasing academic achievements, technical skills, and professional experience.
 
 Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js background.
 
@@ -13,8 +13,10 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Custom animated cursor** for enhanced user experience
 - **Fully responsive design** optimised for desktop and mobile
 - **Working contact form** with Formspree integration and email delivery
+- **Comprehensive content sections** including education, experience, volunteering, organizations, languages, and honors
 - **Project showcase** with live demos and GitHub links
 - **Skills categorisation** including programming languages, technologies, and soft skills
+- **Timeline layouts** for education and professional experience
 - **Smooth scroll navigation** with active section highlighting
 - **Social media integration** (GitHub, LinkedIn, Email)
 - **Modern CSS animations** with intersection observers and parallax effects
@@ -22,7 +24,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 ## Project Structure
 
 ```
-├── index.html              # Main HTML file with all sections
+├── index.html              # Main HTML file with comprehensive portfolio sections
 ├── css/
 │   └── style.css          # Complete stylesheet with animations and responsive design
 ├── js/
@@ -34,6 +36,23 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 ├── README.md             # Project documentation
 └── LICENSE               # MIT License
 ```
+
+## Content Sections
+
+- **Hero Section** - Animated introduction with typing effect
+- **About** - Professional summary and statistics
+- **Education** - Academic background including Davidson College, University of York, and Azerbaijan University of Languages
+- **Experience** - Professional roles including IT internship, research, NCAA wrestling, and officiating
+- **Skills** - Technical and soft skills organized by category
+- **Volunteering & Leadership** - Eagle Scout, Young Marines, coaching, and community service
+- **Organizations** - Mensa Society and QuestBridge membership
+- **Languages** - English (native), Russian (C1), Azerbaijani (B1) with proficiency indicators
+- **Honors & Awards** - Academic scholarships, leadership recognition, and achievements
+- **Writing Samples** - Academic papers on international relations and financial markets
+- **Projects** - Technical projects with live demos and GitHub repositories
+- **Contact** - Working contact form and social media links
+- **Projects** - Technical projects with live demos and GitHub repositories
+- **Contact** - Working contact form and social media links
 
 ## Technologies Used
 
@@ -48,15 +67,25 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 
 ### **Visual Design**
 - **Hero Section:** Typing animation with gradient text effects and Three.js background
+- **Timeline Layouts:** Clean, organized presentation of education and experience
 - **Custom Cursor:** Animated cursor with hover effects on interactive elements
 - **Responsive Layout:** Mobile-first design with smooth breakpoints
 - **Color Scheme:** Dark theme with red accent colors and modern typography
+- **Professional Typography:** Inter font family with multiple weights for hierarchy
 
 ### **Interactive Elements**
 - **Three.js Grid:** Dynamic 3D wireframe grid that responds to mouse movement
 - **Smooth Scrolling:** Section-based navigation with active link highlighting
 - **Hover Animations:** Project cards with overlay effects and link previews
 - **Loading States:** Font loading detection and smooth animation timing
+- **Scroll Animations:** Intersection observer-based animations for section reveals
+
+### **Content Organization**
+- **Comprehensive Sections:** Detailed education, experience, volunteering, and achievements
+- **Skill Categorization:** Technical skills organized by programming languages, tools, and soft skills
+- **Language Proficiency:** Visual indicators for multilingual capabilities
+- **Achievement Highlights:** Academic honors, scholarships, and leadership recognition
+- **Project Portfolio:** Featured projects with live demos and technical details
 
 ### **Contact Integration**
 - **Formspree Integration:** Working contact form that sends emails directly
@@ -98,8 +127,13 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 
 ### **Content Updates**
 - **Personal Info:** Update name, title, and description in the hero section
-- **About Section:** Modify the biography and statistics in `index.html`
+- **About Section:** Modify the biography and statistics in the about section
+- **Education:** Add or modify educational institutions, degrees, and coursework
+- **Experience:** Update professional roles, responsibilities, and achievements
 - **Skills:** Edit the skills categories and tags to match your expertise
+- **Volunteering:** Add leadership roles, community service, and organizational involvement
+- **Languages:** Update language proficiency levels and descriptions
+- **Honors:** Add academic awards, scholarships, and recognition
 - **Projects:** Add/remove project cards with links to your repositories and live demos
 
 ### **Styling Changes**
@@ -108,9 +142,11 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Animations:** Adjust timing and effects in both CSS and JavaScript files
 
 ### **Functionality Modifications**
-- **Contact Form:** Update Formspree endpoint in `index.html` action attribute
+- **Contact Form:** Update Formspree endpoint in the form action attribute
 - **Social Links:** Change URLs in the hero and contact sections
 - **Three.js Grid:** Modify grid parameters in `three-grid.js` for different effects
+- **Navigation:** Add or remove navigation items to match your content sections
+- **Animations:** Adjust scroll-triggered animations in `main.js` for new sections
 
 ### **Assets**
 - **Profile Photo:** Replace `images/pfp.jpg` with your own image (recommended: 400x400px)
@@ -152,10 +188,12 @@ The contact form uses Formspree for email delivery:
 ## Performance Notes
 
 - **Three.js Grid:** Optimised for 60fps with requestAnimationFrame
-- **Font Loading:** Preconnected with font-display: swap
-- **Images:** Optimised for web with fallback placeholders
-- **CSS:** Minified and organised for fast loading
-- **JavaScript:** Modern ES6+ with progressive enhancement
+- **Font Loading:** Preconnected with font-display: swap for improved loading
+- **Images:** Optimised for web with fallback placeholders and error handling
+- **CSS:** Organised and optimised for fast loading with efficient selectors
+- **JavaScript:** Modern ES6+ with progressive enhancement and intersection observers
+- **Responsive Design:** Mobile-first approach with efficient media queries
+- **Animation Performance:** Hardware-accelerated CSS transforms and optimized scroll listeners
 
 ## Contributing
 
