@@ -459,7 +459,6 @@ document.addEventListener('DOMContentLoaded', function() {
             fullscreenBtn.title = 'Fullscreen';
         }
     });
-    
     // Close modal on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
