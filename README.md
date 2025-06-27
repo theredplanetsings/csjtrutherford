@@ -1,8 +1,8 @@
-# Christian Rutherford - Personal Portfolio
+# Personal Portfolio
 
-Professional portfolio website showcasing academic achievements, technical skills, and professional experience.
+Professional portfolio website showcasing academic achievements, technical skills, and professional experience of a Davidson College Computer Science student with interests in national security, quantitative finance, and open-source intelligence (OSINT).
 
-Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js background.
+Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js background and comprehensive favicon support.
 
 **Live Site:** https://theredplanetsings.github.io/csjtrutherford/
 
@@ -11,6 +11,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Animated typing effect** for hero title with smooth font loading
 - **Interactive Three.js grid background** with mouse-responsive animations
 - **Custom animated cursor** for enhanced user experience
+- **Comprehensive favicon support** with multiple sizes and formats for all devices
 - **Fully responsive design** optimised for desktop and mobile
 - **Working contact form** with Formspree integration and email delivery
 - **PDF modal viewer** with zoom controls, fullscreen mode, and download functionality
@@ -21,6 +22,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Smooth scroll navigation** with active section highlighting
 - **Social media integration** (GitHub, LinkedIn, Email)
 - **Modern CSS animations** with intersection observers and parallax effects
+- **Academic credential verification** with external links to official platforms
 
 ## Project Structure
 
@@ -29,32 +31,31 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 ├── css/
 │   └── style.css          # Complete stylesheet with animations and responsive design
 ├── js/
-│   ├── main.js            # Core functionality: navigation, typing animation, form handling, PDF modal
-│   └── three-grid.js      # Three.js animated grid background with mouse interaction
+│   ├── main.js            # Core functionalities
+│   ├── three-grid.js      # Three.js animated grid background with mouse interaction
+│   └── three.module.js    # Three.js library module
 ├── images/
-│   ├── pfp.jpg           # Profile photo
-│   └── banner.PNG        # Banner image
+│   ├── icons and whatnot yktv
 ├── papers/
-│   ├── OPI Score.pdf     # ACTFL Oral Proficiency Interview certificate
-│   ├── POL-161 Final Paper.pdf    # International Relations analysis paper
-│   └── Yale Financial Markets Financialisation of Housing Paper.pdf    # Financial markets research
-├── README.md             # Project documentation
+│   ├── writing samples + certifications and stuff yktv
+├── project banner yktv
+├── README.md literally this document
 └── LICENSE               # MIT License
 ```
 
 ## Content Sections
 
 - **Hero Section** - Animated introduction with typing effect
-- **About** - Professional summary and statistics
-- **Education** - Academic background including Davidson College, University of York, and Azerbaijan University of Languages
-- **Experience** - Professional roles including IT internship, research, NCAA wrestling, and officiating
-- **Skills** - Technical and soft skills organized by category
-- **Volunteering & Leadership** - Eagle Scout, Young Marines, coaching, and community service
-- **Organizations** - Mensa Society and QuestBridge membership
-- **Languages** - English (native), Russian (C1), Azerbaijani (B1) with proficiency indicators
-- **Honors, Awards, & Certifications** - Academic scholarships, leadership recognition, language certifications, and achievements with credential verification links
-- **Writing Samples** - Academic papers on international relations and financial markets with PDF viewer
-- **Projects** - Technical projects with live demos and GitHub repositories
+- **About** - Professional summary with focus on Computer Science & Russian Studies, national security interests, and statistical achievements
+- **Education** - Academic background including Davidson College, University of York, and Azerbaijan University of Languages with detailed coursework
+- **Experience** - Professional roles including IT internship at Paradigm Companies, research at College Crisis Initiative, NCAA Division I wrestling, and officiating
+- **Skills** - Technical and soft skills organized by category (Languages, Libraries & Technologies, Tools & Frameworks, Soft Skills including multilingual capabilities)
+- **Volunteering & Leadership** - Eagle Scout, Young Marines (Gunnery Sergeant), coaching, and community service with achievement recognition
+- **Organizations** - Mensa Society and QuestBridge membership with detailed descriptions
+- **Languages** - English (native), Russian (C1), Azerbaijani (B1) with visual proficiency indicators and learning context
+- **Honors, Awards, & Certifications** - Academic scholarships (Gilman Scholar), leadership recognition (Young Marine of the Year), language certifications (ACTFL OPI), and achievements with credential verification links
+- **Writing Samples** - Academic papers on international relations (Russia-Ukraine War analysis) and financial markets (Housing Financialisation) with integrated PDF viewer
+- **Projects** - Technical projects including Options Pricing Dashboard, Simple Shell, Active Directory Automation, and Trading Analysis Tools with live demos and GitHub repositories
 - **Contact** - Working contact form and social media links
 
 ## Technologies Used
@@ -69,12 +70,13 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 ## Key Features Breakdown
 
 ### **Visual Design**
-- **Hero Section:** Typing animation with gradient text effects and Three.js background
-- **Timeline Layouts:** Clean, organized presentation of education and experience
+- **Hero Section:** Typing animation with gradient text effects, Three.js background, and professional tagline
+- **Timeline Layouts:** Clean, organized presentation of education and professional experience with detailed coursework and achievements
 - **Custom Cursor:** Animated cursor with hover effects on interactive elements
-- **Responsive Layout:** Mobile-first design with smooth breakpoints
-- **Color Scheme:** Dark theme with red accent colors and modern typography
-- **Professional Typography:** Inter font family with multiple weights for hierarchy
+- **Responsive Layout:** Mobile-first design with smooth breakpoints and touch-friendly navigation
+- **Color Scheme:** Dark theme with red accent colors (#ff4757) and modern typography
+- **Professional Typography:** Inter font family with multiple weights (300-900) for visual hierarchy
+- **Comprehensive Favicon Support:** Multiple icon formats and sizes for optimal display across all devices and platforms
 
 ### **Interactive Elements**
 - **Three.js Grid:** Dynamic 3D wireframe grid that responds to mouse movement
@@ -84,12 +86,12 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Scroll Animations:** Intersection observer-based animations for section reveals
 
 ### **Content Organization**
-- **Comprehensive Sections:** Detailed education, experience, volunteering, and achievements
-- **Skill Categorization:** Technical skills organized by programming languages, tools, and soft skills
-- **Language Proficiency:** Visual indicators for multilingual capabilities
-- **Achievement Highlights:** Academic honors, scholarships, leadership recognition, and professional certifications with external credential verification
-- **Project Portfolio:** Featured projects with live demos and technical details
-- **Academic Writing:** Research papers and analysis with integrated PDF viewer
+- **Comprehensive Sections:** Detailed education (3 institutions), experience (5 professional roles), volunteering (4 major commitments), and achievements
+- **Skill Categorization:** Technical skills organized by programming languages (Python, C/C++, JavaScript, etc.), libraries & technologies (React, Node.js, Three.js, etc.), tools & frameworks (Microsoft 365, Git, Azure, etc.), and soft skills including multilingual capabilities
+- **Language Proficiency:** Visual indicators for multilingual capabilities (English native, Russian C1, Azerbaijani B1) with learning context
+- **Achievement Highlights:** Academic honors (Gilman Scholar, QuestBridge Scholar), leadership recognition (Young Marine of the Year 2021/2022), professional certifications (ACTFL OPI Azerbaijani B-1), and external credential verification
+- **Project Portfolio:** Featured technical projects with live demos including Options Pricing Dashboard, Shell implementation, and automation tools
+- **Academic Writing:** Research papers on international relations (Russia-Ukraine War analysis) and financial markets (Housing Financialisation) with integrated PDF viewer
 
 ### **Document Viewing**
 - **PDF Modal System:** In-page document viewer for academic papers and certificates
@@ -163,10 +165,14 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **PDF Documents:** Replace PDF files in the `papers/` directory with your own documents
 
 ### **Assets**
-- **Profile Photo:** Replace `images/pfp.jpg` with your own image (recommended: 400x400px)
-- **Documents:** Add your PDF documents to the `papers/` directory
-- **Favicon:** Add your own favicon files to the root directory
-- **Banner:** Update or remove `images/banner.PNG` as needed
+- **Profile Photo:** Replace `images/pfp.jpg` with your own image (recommended: 400x400px square format)
+- **Documents:** Add your PDF documents to the `papers/` directory for academic papers and certificates
+- **Favicon Package:** Complete favicon set includes:
+  - `favicon.ico` - Standard ICO format for legacy browsers
+  - `favicon-16x16.png` and `favicon-32x32.png` - Modern PNG favicons
+  - `apple-touch-icon.png` - iOS home screen icon (180x180px)
+  - `android-chrome-192x192.png` and `android-chrome-512x512.png` - Android icons
+- **Banner:** Update or remove `banner.PNG` as needed for project branding
 
 ## Contact Form Setup
 
@@ -202,14 +208,15 @@ The contact form uses Formspree for email delivery:
 
 ## Performance Notes
 
-- **Three.js Grid:** Optimised for 60fps with requestAnimationFrame
-- **Font Loading:** Preconnected with font-display: swap for improved loading
-- **Images:** Optimised for web with fallback placeholders and error handling
-- **CSS:** Organised and optimised for fast loading with efficient selectors
-- **JavaScript:** Modern ES6+ with progressive enhancement and intersection observers
-- **Responsive Design:** Mobile-first approach with efficient media queries
-- **Animation Performance:** Hardware-accelerated CSS transforms and optimized scroll listeners
-- **PDF Handling:** Efficient document loading and memory management for modal viewer
+- **Three.js Grid:** Optimised for 60fps with requestAnimationFrame and efficient geometry handling
+- **Font Loading:** Preconnected Google Fonts with font-display: swap for improved loading performance
+- **Images:** Optimised for web with fallback placeholders, error handling, and lazy loading considerations
+- **CSS:** Organised and optimised for fast loading with efficient selectors and minimal reflow
+- **JavaScript:** Modern ES6+ with progressive enhancement, intersection observers, and debounced scroll listeners
+- **Responsive Design:** Mobile-first approach with efficient media queries and touch optimizations
+- **Animation Performance:** Hardware-accelerated CSS transforms and optimized scroll listeners for smooth 60fps animations
+- **PDF Handling:** Efficient document loading and memory management for modal viewer with zoom controls
+- **Favicon Optimization:** Comprehensive icon set ensures fast loading and proper display across all devices and platforms
 
 ## Contributing
 
