@@ -1,4 +1,4 @@
-# Personal Portfolio
+# Christian Rutherford - Personal Portfolio
 
 Professional portfolio website showcasing academic achievements, technical skills, and professional experience.
 
@@ -13,7 +13,8 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Custom animated cursor** for enhanced user experience
 - **Fully responsive design** optimised for desktop and mobile
 - **Working contact form** with Formspree integration and email delivery
-- **Comprehensive content sections** including education, experience, volunteering, organizations, languages, and honors
+- **PDF modal viewer** with zoom controls, fullscreen mode, and download functionality
+- **Comprehensive content sections** including education, experience, volunteering, organizations, languages, honors, and writing samples
 - **Project showcase** with live demos and GitHub links
 - **Skills categorisation** including programming languages, technologies, and soft skills
 - **Timeline layouts** for education and professional experience
@@ -28,11 +29,15 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 ├── css/
 │   └── style.css          # Complete stylesheet with animations and responsive design
 ├── js/
-│   ├── main.js            # Core functionality: navigation, typing animation, form handling
+│   ├── main.js            # Core functionality: navigation, typing animation, form handling, PDF modal
 │   └── three-grid.js      # Three.js animated grid background with mouse interaction
 ├── images/
 │   ├── pfp.jpg           # Profile photo
 │   └── banner.PNG        # Banner image
+├── papers/
+│   ├── OPI Score.pdf     # ACTFL Oral Proficiency Interview certificate
+│   ├── POL-161 Final Paper.pdf    # International Relations analysis paper
+│   └── Yale Financial Markets Financialisation of Housing Paper.pdf    # Financial markets research
 ├── README.md             # Project documentation
 └── LICENSE               # MIT License
 ```
@@ -47,10 +52,8 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Volunteering & Leadership** - Eagle Scout, Young Marines, coaching, and community service
 - **Organizations** - Mensa Society and QuestBridge membership
 - **Languages** - English (native), Russian (C1), Azerbaijani (B1) with proficiency indicators
-- **Honors & Awards** - Academic scholarships, leadership recognition, and achievements
-- **Writing Samples** - Academic papers on international relations and financial markets
-- **Projects** - Technical projects with live demos and GitHub repositories
-- **Contact** - Working contact form and social media links
+- **Honors, Awards, & Certifications** - Academic scholarships, leadership recognition, language certifications, and achievements with credential verification links
+- **Writing Samples** - Academic papers on international relations and financial markets with PDF viewer
 - **Projects** - Technical projects with live demos and GitHub repositories
 - **Contact** - Working contact form and social media links
 
@@ -84,8 +87,17 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Comprehensive Sections:** Detailed education, experience, volunteering, and achievements
 - **Skill Categorization:** Technical skills organized by programming languages, tools, and soft skills
 - **Language Proficiency:** Visual indicators for multilingual capabilities
-- **Achievement Highlights:** Academic honors, scholarships, and leadership recognition
+- **Achievement Highlights:** Academic honors, scholarships, leadership recognition, and professional certifications with external credential verification
 - **Project Portfolio:** Featured projects with live demos and technical details
+- **Academic Writing:** Research papers and analysis with integrated PDF viewer
+
+### **Document Viewing**
+- **PDF Modal System:** In-page document viewer for academic papers and certificates
+- **Zoom Controls:** 50% to 200% zoom with smooth scaling
+- **Fullscreen Mode:** Immersive reading experience for detailed documents
+- **Download Options:** Direct PDF download functionality
+- **Credential Verification:** External links to official credential platforms (credential.net)
+- **Fallback Support:** Graceful handling for unsupported browsers
 
 ### **Contact Integration**
 - **Formspree Integration:** Working contact form that sends emails directly
@@ -133,7 +145,8 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Skills:** Edit the skills categories and tags to match your expertise
 - **Volunteering:** Add leadership roles, community service, and organizational involvement
 - **Languages:** Update language proficiency levels and descriptions
-- **Honors:** Add academic awards, scholarships, and recognition
+- **Honors:** Add academic awards, scholarships, certifications, and recognition with credential verification links
+- **Writing Samples:** Add academic papers, research documents, and professional writing
 - **Projects:** Add/remove project cards with links to your repositories and live demos
 
 ### **Styling Changes**
@@ -147,9 +160,11 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Three.js Grid:** Modify grid parameters in `three-grid.js` for different effects
 - **Navigation:** Add or remove navigation items to match your content sections
 - **Animations:** Adjust scroll-triggered animations in `main.js` for new sections
+- **PDF Documents:** Replace PDF files in the `papers/` directory with your own documents
 
 ### **Assets**
 - **Profile Photo:** Replace `images/pfp.jpg` with your own image (recommended: 400x400px)
+- **Documents:** Add your PDF documents to the `papers/` directory
 - **Favicon:** Add your own favicon files to the root directory
 - **Banner:** Update or remove `images/banner.PNG` as needed
 
@@ -161,6 +176,13 @@ The contact form uses Formspree for email delivery:
 2. **Create new form** and note the form ID
 3. **Update form action** in `index.html`: `action="https://formspree.io/f/YOUR_FORM_ID"`
 4. **Configure settings** in Formspree dashboard (email, CAPTCHA, etc.)
+
+## Browser Support
+
+- **Chrome:** 80+
+- **Firefox:** 75+
+- **Safari:** 13+
+- **Edge:** 80+
 
 *Modern JavaScript features used: Fetch API, Intersection Observer, CSS Grid*
 
@@ -187,6 +209,7 @@ The contact form uses Formspree for email delivery:
 - **JavaScript:** Modern ES6+ with progressive enhancement and intersection observers
 - **Responsive Design:** Mobile-first approach with efficient media queries
 - **Animation Performance:** Hardware-accelerated CSS transforms and optimized scroll listeners
+- **PDF Handling:** Efficient document loading and memory management for modal viewer
 
 ## Contributing
 
