@@ -162,13 +162,6 @@ The contact form uses Formspree for email delivery:
 3. **Update form action** in `index.html`: `action="https://formspree.io/f/YOUR_FORM_ID"`
 4. **Configure settings** in Formspree dashboard (email, CAPTCHA, etc.)
 
-## Browser Support
-
-- **Chrome:** 80+
-- **Firefox:** 75+
-- **Safari:** 13+
-- **Edge:** 80+
-
 *Modern JavaScript features used: Fetch API, Intersection Observer, CSS Grid*
 
 ## Dependencies & Credits
