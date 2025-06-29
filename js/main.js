@@ -31,7 +31,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
 // Active navigation link highlighting
 window.addEventListener('scroll', () => {
     let current = '';
