@@ -98,7 +98,6 @@ body {
 .nav-link.active {
     color: #dc2626;
 }
-
 .nav-link::after {
     content: '';
     position: absolute;
