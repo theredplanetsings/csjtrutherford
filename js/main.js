@@ -17,7 +17,6 @@ navLinks.forEach(link => {
         navMenu.classList.remove('active');
     });
 });
-
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
