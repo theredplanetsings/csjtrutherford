@@ -9,7 +9,6 @@ if (hamburger) {
         navMenu.classList.toggle('active');
     });
 }
-
 // Close mobile menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -50,7 +49,6 @@ window.addEventListener('scroll', () => {
         }
     });
 });
-
 // Navbar background on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -68,7 +66,6 @@ const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -77,7 +74,6 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, observerOptions);
-
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.project-card, .skill-category, .stat, .education-item, .experience-item, .volunteering-item, .organization-item, .language-item, .honor-item, .writing-item');
