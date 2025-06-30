@@ -4,7 +4,7 @@ Professional portfolio website showcasing academic achievements, technical skill
 
 Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js background and comprehensive favicon support.
 
-**Live Site:** https://theredplanetsings.github.io/csjtrutherford/
+**Live Page:** https://theredplanetsings.github.io/csjtrutherford/
 
 ## Features
 
