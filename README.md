@@ -230,6 +230,4 @@ This is a personal portfolio, but feel free to:
 
 This project is open source under the **MIT License**. See `LICENSE` file for full details.
 
----
-
 **Contact:** [GitHub](https://github.com/theredplanetsings) | [LinkedIn](https://www.linkedin.com/in/csjtrutherford)
