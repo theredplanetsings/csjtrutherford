@@ -9,7 +9,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 ## Features
 
 - **Animated typing effect** for hero title with smooth font loading
-- **Interactive Three.js grid background** with mouse-responsive animations
+- **Interactive Three.js grid background** with mouse-responsive animations on desktop and subtle jiggle animation on mobile
 - **Custom animated cursor** for enhanced user experience
 - **Comprehensive favicon support** with multiple sizes and formats for all devices
 - **Fully responsive design** optimised for desktop and mobile
@@ -79,7 +79,8 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - **Comprehensive Favicon Support:** Multiple icon formats and sizes for optimal display across all devices and platforms
 
 ### **Interactive Elements**
-- **Three.js Grid:** Dynamic 3D wireframe grid that responds to mouse movement
+- **Three.js Grid:** Dynamic 3D wireframe grid that responds to mouse movement on desktop; gentle jiggle animation on mobile devices for optimal performance
+- **Mobile Optimization:** Smart device detection with performance-optimized animations for touch devices
 - **Smooth Scrolling:** Section-based navigation with active link highlighting
 - **Hover Animations:** Project cards with overlay effects and link previews
 - **Loading States:** Font loading detection and smooth animation timing
@@ -109,7 +110,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 
 ### **Performance & Accessibility**
 - **Font Optimisation:** Preconnected Google Fonts with multiple weights
-- **Mobile Responsive:** Touch-friendly navigation and optimised layouts
+- **Mobile Responsive:** Touch-friendly navigation and optimised layouts with device-specific animations
 - **Cross-browser Support:** Modern JavaScript with fallbacks
 - **SEO Friendly:** Semantic HTML structure and meta tags
 
@@ -208,12 +209,13 @@ The contact form uses Formspree for email delivery:
 
 ## Performance Notes
 
-- **Three.js Grid:** Optimised for 60fps with requestAnimationFrame and efficient geometry handling
+- **Three.js Grid:** Optimised for 60fps with requestAnimationFrame and efficient geometry handling; mobile devices receive performance-optimized jiggle animation instead of mouse interaction
+- **Mobile Detection:** Smart device detection (user agent, touch points, screen width) ensures optimal experience across all devices
 - **Font Loading:** Preconnected Google Fonts with font-display: swap for improved loading performance
 - **Images:** Optimised for web with fallback placeholders, error handling, and lazy loading considerations
 - **CSS:** Organised and optimised for fast loading with efficient selectors and minimal reflow
 - **JavaScript:** Modern ES6+ with progressive enhancement, intersection observers, and debounced scroll listeners
-- **Responsive Design:** Mobile-first approach with efficient media queries and touch optimizations
+- **Responsive Design:** Mobile-first approach with efficient media queries and touch optimizations, including device-specific Three.js animations
 - **Animation Performance:** Hardware-accelerated CSS transforms and optimized scroll listeners for smooth 60fps animations
 - **PDF Handling:** Efficient document loading and memory management for modal viewer with zoom controls
 - **Favicon Optimization:** Comprehensive icon set ensures fast loading and proper display across all devices and platforms
