@@ -72,33 +72,55 @@ function initGrid() {
         // Initial grid creation
         createGrid();
 
-        // Mouse interaction
+        // Mobile detection
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                         (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) ||
+                         window.innerWidth <= 768;
+
+        // Mouse interaction for desktop
         let mouse = { x: 0, y: 0 };
-        window.addEventListener('mousemove', (e) => {
-            const rect = hero.getBoundingClientRect();
-            // Use rect.width/height for correct scaling, not hero.offsetWidth/offsetHeight
-            mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-            mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-        });
+        
+        if (!isMobile) {
+            window.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                // Use rect.width/height for correct scaling, not hero.offsetWidth/offsetHeight
+                mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+            });
+        }
 
         function animate() {
             const pos = geometry.attributes.position.array;
+            const time = Date.now() * 0.001; // Time for mobile animation
+            
             for (let i = 0; i < points.length; i++) {
-                // Project mouse to grid space using correct grid size
-                const mx = mouse.x * ((gridCols - 1) * spacing) / 2;
-                const my = mouse.y * ((gridRows - 1) * spacing) / 2;
-                const dx = basePositions[i * 3] - mx;
-                const dy = basePositions[i * 3 + 1] - my;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                // Push effect - centered under cursor, follows 1:1
-                if (dist < 8) {
-                    const force = (8 - dist) * 0.7;
-                    pos[i * 3] = basePositions[i * 3] + (mx - basePositions[i * 3]) * (force / 8);
-                    pos[i * 3 + 1] = basePositions[i * 3 + 1] + (my - basePositions[i * 3 + 1]) * (force / 8);
+                if (isMobile) {
+                    // Mobile: gentle jiggle animation
+                    const jiggleAmplitude = 0.1;
+                    const jiggleSpeed = 0.5;
+                    const offsetX = (Math.sin(time * jiggleSpeed + i * 0.1) + Math.cos(time * jiggleSpeed * 0.7 + i * 0.2)) * jiggleAmplitude;
+                    const offsetY = (Math.cos(time * jiggleSpeed * 0.8 + i * 0.15) + Math.sin(time * jiggleSpeed * 1.2 + i * 0.25)) * jiggleAmplitude;
+                    
+                    pos[i * 3] = basePositions[i * 3] + offsetX;
+                    pos[i * 3 + 1] = basePositions[i * 3 + 1] + offsetY;
                 } else {
-                    // Return to base
-                    pos[i * 3] += (basePositions[i * 3] - pos[i * 3]) * 0.08;
-                    pos[i * 3 + 1] += (basePositions[i * 3 + 1] - pos[i * 3 + 1]) * 0.08;
+                    // Desktop: mouse interaction
+                    // Project mouse to grid space using correct grid size
+                    const mx = mouse.x * ((gridCols - 1) * spacing) / 2;
+                    const my = mouse.y * ((gridRows - 1) * spacing) / 2;
+                    const dx = basePositions[i * 3] - mx;
+                    const dy = basePositions[i * 3 + 1] - my;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    // Push effect - centered under cursor, follows 1:1
+                    if (dist < 8) {
+                        const force = (8 - dist) * 0.7;
+                        pos[i * 3] = basePositions[i * 3] + (mx - basePositions[i * 3]) * (force / 8);
+                        pos[i * 3 + 1] = basePositions[i * 3 + 1] + (my - basePositions[i * 3 + 1]) * (force / 8);
+                    } else {
+                        // Return to base
+                        pos[i * 3] += (basePositions[i * 3] - pos[i * 3]) * 0.08;
+                        pos[i * 3 + 1] += (basePositions[i * 3 + 1] - pos[i * 3 + 1]) * 0.08;
+                    }
                 }
             }
             geometry.attributes.position.needsUpdate = true;
