@@ -136,6 +136,7 @@ body {
     color: white;
     position: relative;
     overflow: hidden;
+    
 }
 
 .hero-content {
@@ -152,10 +153,15 @@ body {
     font-weight: 800;
     margin-bottom: 1rem;
     line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(0, 0, 0, 0.7),
+        4px 4px 8px rgba(0, 0, 0, 0.8),
+        -2px -2px 6px rgba(0, 0, 0, 0.6);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    color: #ffffff;
 }
 
 .hero-title.typing {
@@ -169,6 +175,10 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-weight: 900;
+    text-shadow: 
+        0 0 15px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(0, 0, 0, 0.7),
+        3px 3px 6px rgba(0, 0, 0, 0.8);
 }
 
 .hero-subtitle {
@@ -177,7 +187,10 @@ body {
     margin-bottom: 1rem;
     opacity: 1;
     color: #ffffff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 
+        0 0 15px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(0, 0, 0, 0.6),
+        3px 3px 6px rgba(0, 0, 0, 0.8);
 }
 
 .hero-description {
@@ -189,7 +202,10 @@ body {
     text-align: center;
     font-weight: 500;
     color: #f8fafc;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: 
+        0 0 12px rgba(0, 0, 0, 0.9),
+        0 0 24px rgba(0, 0, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-buttons {
@@ -210,6 +226,9 @@ body {
     border: 2px solid transparent;
     cursor: pointer;
     font-size: 1rem;
+    text-shadow: 
+        0 0 10px rgba(0, 0, 0, 0.9),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .btn-primary {
