@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-Professional portfolio website showcasing academic achievements, technical skills, and professional experience of a Davidson College Computer Science student with interests in national security, quantitative finance, and open-source intelligence (OSINT).
+Professional portfolio website showcasing academic achievements, technical skills, and professional experience of Computer Science student with interests in national security, quantitative finance, and open-source intelligence (OSINT).
 
 Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js background and comprehensive favicon support.
 
