@@ -485,6 +485,16 @@ body {
     border-color: #dc2626;
 }
 
+.education .education-item .detail-section ul a {
+    color: #fff;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.education .education-item .detail-section ul a:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
 /* Experience Section */
 .experience {
     padding: 5rem 0;
