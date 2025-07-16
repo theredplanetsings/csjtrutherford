@@ -1697,8 +1697,17 @@ input, textarea, select {
 
 /* Mobile Navigation */
 @media (max-width: 900px) {
-  .nav-container {
+  html, body {
+    width: 100vw;
+    max-width: 100vw;
     overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  .nav-container {
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
   .nav-menu {
     display: flex;
@@ -1708,6 +1717,7 @@ input, textarea, select {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
     max-width: 100vw;
+    width: 100vw;
     box-sizing: border-box;
   }
   .nav-menu::-webkit-scrollbar {
