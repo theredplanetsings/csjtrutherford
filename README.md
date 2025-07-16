@@ -16,7 +16,7 @@ Built with modern HTML, CSS, and JavaScript, featuring an interactive Three.js b
 - Working contact form with Formspree integration and email delivery
 - PDF modal viewer with zoom controls, fullscreen mode, and download functionality
 - Comprehensive content sections including education, experience, volunteering, organisations, languages, honours, and writing samples
-- Project showcase with live demos and GitHub links
+- Project showcase with live demos and source code links
 - Skills categorisation including programming languages, technologies, and soft skills
 - Timeline layouts for education and professional experience
 - Smooth scroll navigation with active section highlighting
@@ -39,7 +39,7 @@ Built with modern HTML, CSS, and JavaScript, featuring an interactive Three.js b
 ├── papers/
 │   ├── writing samples and certifications
 ├── README.md              # This document
-└── LICENSE                # MIT License
+└── LICENSE                # MIT Licence
 ```
 
 ## Content Sections
@@ -54,7 +54,7 @@ Built with modern HTML, CSS, and JavaScript, featuring an interactive Three.js b
 - Languages – English (native), Russian (C1), Azerbaijani (B1) with visual proficiency indicators and learning context
 - Honours, Awards, & Certifications – Academic scholarships, leadership recognition, language certifications, and achievements with credential verification links
 - Writing Samples – Academic papers on international relations and financial markets with integrated PDF viewer
-- Projects – Technical projects including options pricing dashboard, shell implementation, automation tools, and more, with live demos and GitHub repositories
+- Projects – Technical projects including options pricing dashboard, shell implementation, automation tools, and more, with live demos and source code repositories
 - Contact – Working contact form and social media links
 
 ## Technologies Used
@@ -170,4 +170,4 @@ This is a personal portfolio template. You are welcome to:
 
 This project is open source under the MIT Licence. See the `LICENSE` file for full details.
 
-**Contact:** [GitHub](https://github.com/theredplanetsings) | [LinkedIn](https://www.linkedin.com/in/csjtrutherford)
+Contact: [GitHub](https://github.com/theredplanetsings) | [LinkedIn](https://www.linkedin.com/in/csjtrutherford)
