@@ -1807,9 +1807,17 @@ input, textarea, select {
     align-items: center;
   }
   .about-image {
+    order: -1;
     width: 180px;
     height: 180px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-text {
+    order: 2;
+    width: 100%;
   }
   .profile-photo,
   .image-placeholder {
