@@ -2,7 +2,7 @@
 
 Portfolio showcasing academic achievements, technical skills, and professional experience of a Computer Science student with interests in national security, quantitative finance, and open-source intelligence (OSINT).
 
-Built with modern HTML, CSS, and JavaScript, featuring an interactive Three.js background and comprehensive favicon support.
+Built with modern HTML, CSS, and JavaScript, and an interactive Three.js background
 
 **Live Site:** https://theredplanetsings.github.io/csjtrutherford/
 
