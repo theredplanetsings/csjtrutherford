@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-A professional portfolio website showcasing academic achievements, technical skills, and professional experience of a Computer Science student with interests in national security, quantitative finance, and open-source intelligence (OSINT).
+Portfolio showcasing academic achievements, technical skills, and professional experience of a Computer Science student with interests in national security, quantitative finance, and open-source intelligence (OSINT).
 
 Built with modern HTML, CSS, and JavaScript, featuring an interactive Three.js background and comprehensive favicon support.
 
