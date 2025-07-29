@@ -34,13 +34,22 @@ window.addEventListener('scroll', () => {
     let current = '';
     const sections = document.querySelectorAll('section[id]');
     
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
+    // Check if user has scrolled to the bottom of the page
+    const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+    
+    if (isAtBottom) {
+        // If at bottom, highlight the last section (contact)
+        current = 'contact';
+    } else {
+        // Otherwise, use the normal section detection
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+    }
 
     navLinks.forEach(link => {
         link.classList.remove('active');
