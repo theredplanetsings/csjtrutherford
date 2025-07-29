@@ -643,7 +643,7 @@ class AudioSystem {
     
     handleError(e) {
         console.error('Audio error:', e);
-        this.playNext(); // Skips to next track on error
+        this.playNext(); // skips to next track on error
     }
     
     playNext() {
@@ -660,13 +660,13 @@ class AudioSystem {
     }
     
     playPrevious() {
-        // If we're more than 3 seconds into the song, restart current song
+        // If we're 3+ seconds into song, restarts current song
         if (this.audio.currentTime > 3) {
             this.audio.currentTime = 0;
             return;
         }
         
-        // Otherwise go to previous track
+        // goes to previous track, otherwise
         this.currentTrackIndex = (this.currentTrackIndex - 1 + this.playQueue.length) % this.playQueue.length;
         
         if (this.hasStarted) {
@@ -678,7 +678,7 @@ class AudioSystem {
         console.log('Audio system: Toggle button clicked, hasStarted:', this.hasStarted, 'isMuted:', this.isMuted);
         
         if (!this.hasStarted) {
-            // First time - start the system
+            // first time - start the system
             console.log('Audio system: Starting system manually via button click...');
             this.hasStarted = true;
             this.isMuted = false;
@@ -686,7 +686,7 @@ class AudioSystem {
             return;
         }
         
-        // Toggle mute/unmute - audio keeps playing in background
+        // toggles mute/unmute - audio keeps playing in backgroundd
         this.isMuted = !this.isMuted;
         this.audio.muted = this.isMuted;
         console.log('Audio system: Toggled mute state to:', this.isMuted);
@@ -696,7 +696,7 @@ class AudioSystem {
     
     updateToggleButton() {
         if (!this.hasStarted) {
-            // Show a play icon when audio hasn't started yet
+            // shows a play icon when audio hasn't started yet
             this.toggleButton.innerHTML = '<i class="fas fa-play"></i>';
             this.toggleButton.classList.remove('muted');
             this.toggleButton.title = 'Start ambient audio';
@@ -732,15 +732,15 @@ class AudioSystem {
             <span class="artist-credit">Credits to ${artistCredit}</span>
         `;
         
-        // Clear any existing timer
+        // clears any existing timer
         if (this.nowPlayingTimer) {
             clearTimeout(this.nowPlayingTimer);
         }
         
-        // Show notification
+        // shows audio notification
         this.nowPlayingElement.classList.add('show');
         
-        // Hide after 4 seconds
+        // hides after 4 seconds
         this.nowPlayingTimer = setTimeout(() => {
             this.nowPlayingElement.classList.remove('show');
             this.nowPlayingTimer = null;
@@ -748,9 +748,9 @@ class AudioSystem {
     }
 }
 
-// Initialize audio system when DOM is loaded
+// initialises audio system when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Test if audio elements exist before creating AudioSystem
+    // tests if audio elements exist before creating AudioSystem
     const testAudio = document.getElementById('ambientAudio');
     const testToggle = document.getElementById('toggleAudio');
     
@@ -767,21 +767,48 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
-    // Create audio system if elements exist
+    // creates audio system if elements exist
     new AudioSystem();
 });
 
-// Add click sound effect to buttons and links
+// adds click sound effect to buttons and links
 document.addEventListener('DOMContentLoaded', () => {
-    // You can add click sound effects here if desired
-    const clickableElements = document.querySelectorAll('a, button, .btn');
+    // preloads the click sound for better performance
+    const clickSoundCache = new Audio('audio/click.mp3');
+    clickSoundCache.volume = 0.1; // 10% volume for subtle effect
+    clickSoundCache.preload = 'auto';
+    
+    // play click sound
+    function playClickSound() {
+        try {
+            // creates a new instance each time to allow overlapping sounds
+            const clickSound = new Audio('audio/click.mp3');
+            clickSound.volume = 0.10;
+            clickSound.play().catch(e => {
+                // handles any autoplay restrictions
+                console.log('Click sound play failed (likely autoplay restriction):', e.name);
+            });
+        } catch (e) {
+            // handles any audio loading errors
+            console.log('Click sound error:', e.name);
+        }
+    }
+    
+    // Selects all interactive elements
+    const clickableElements = document.querySelectorAll('a, button, .btn, input[type="submit"], input[type="button"], .clickable, .project-card, .skill-category, .nav-link');
     
     clickableElements.forEach(element => {
-        element.addEventListener('click', () => {
-            // Optional: add a subtle click sound effect here
-            // const clickSound = new Audio('audio/click.mp3');
-            // clickSound.volume = 0.1;
-            // clickSound.play().catch(() => {});
-        });
+        element.addEventListener('click', playClickSound);
+    });
+    
+    // add click sound to dynamically created elements (like PDF modal controls)
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        
+        // checks if the clicked element or its parent is interactive
+        if (target.matches('button, .btn, a, input[type="submit"], input[type="button"], .clickable') ||
+            target.closest('button, .btn, a, input[type="submit"], input[type="button"], .clickable')) {
+            playClickSound();
+        }
     });
 });
