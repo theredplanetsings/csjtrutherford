@@ -21,6 +21,32 @@
     <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
+    
+    <!-- Audio System -->
+    <div id="audioSystem">
+        <audio id="ambientAudio" preload="auto"></audio>
+    </div>
+    
+    <!-- Audio Controls -->
+    <div id="audioControls" class="audio-controls">
+        <button id="prevTrack" class="audio-control-btn" title="Previous Track">
+            <i class="fas fa-step-backward"></i>
+        </button>
+        <button id="toggleAudio" class="audio-toggle" title="Toggle Audio">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <button id="nextTrack" class="audio-control-btn" title="Next Track">
+            <i class="fas fa-step-forward"></i>
+        </button>
+    </div>
+    
+    <!-- Now Playing Notification -->
+    <div id="nowPlaying" class="now-playing">
+        <div class="now-playing-content">
+            <div class="now-playing-text"></div>
+        </div>
+    </div>
+    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">

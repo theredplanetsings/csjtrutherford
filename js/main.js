@@ -484,3 +484,254 @@ function applyZoom() {
         container.style.overflow = 'auto';
     }
 }
+
+// Audio System
+class AudioSystem {
+    constructor() {
+        this.tracks = [
+            'audio/Audiomachine - The Truth.mp3',
+            'audio/Scott Buckley - Beautiful Oblivion.mp3',
+            'audio/Scott Buckley - Discovery.mp3',
+            'audio/Scott Buckley - This Too Shall Pass.mp3'
+        ];
+        this.currentTrackIndex = 0;
+        this.isPlaying = false;
+        this.isPaused = false;
+        this.isMuted = false;
+        this.audio = document.getElementById('ambientAudio');
+        this.toggleButton = document.getElementById('toggleAudio');
+        this.prevButton = document.getElementById('prevTrack');
+        this.nextButton = document.getElementById('nextTrack');
+        this.nowPlayingElement = document.getElementById('nowPlaying');
+        this.playQueue = [];
+        this.hasStarted = false;
+        this.nowPlayingTimer = null; // Track the notification timer
+        
+        this.init();
+    }
+    
+    init() {
+        // Creates shuffled playlist
+        this.createShuffledPlaylist();
+        
+        // Sets up our audio element
+        this.audio.volume = 0.3; // we start at 30% volume
+        this.audio.loop = false; // Handles audio looping manually
+        
+        // Our event listeners
+        this.audio.addEventListener('ended', () => this.playNext());
+        this.audio.addEventListener('canplaythrough', () => this.handleCanPlay());
+        this.audio.addEventListener('error', (e) => this.handleError(e));
+        this.audio.addEventListener('play', () => {
+            this.isPlaying = true;
+            this.isPaused = false;
+            this.updateToggleButton();
+        });
+        this.audio.addEventListener('pause', () => {
+            this.isPlaying = false;
+            this.isPaused = true;
+            this.updateToggleButton();
+        });
+        this.audio.addEventListener('loadstart', () => {
+            // Ensure volume stays at 30% when loading new tracks
+            this.audio.volume = 0.3;
+        });
+        
+        // Control buttons
+        this.toggleButton.addEventListener('click', () => this.toggleAudio());
+        this.prevButton.addEventListener('click', () => this.playPrevious());
+        this.nextButton.addEventListener('click', () => this.playNext());
+        
+        // Auto-start after user interaction
+        this.setupAutoStart();
+    }
+    
+    createShuffledPlaylist() {
+        // Create a shuffled version of tracks
+        this.playQueue = [...this.tracks];
+        for (let i = this.playQueue.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.playQueue[i], this.playQueue[j]] = [this.playQueue[j], this.playQueue[i]];
+        }
+        this.currentTrackIndex = 0;
+    }
+    
+    setupAutoStart() {
+        // Waits for any user interaction to enable audio
+        const enableAudio = () => {
+            if (!this.hasStarted) {
+                this.hasStarted = true;
+                // Starts playing after 2 seconds of user interaction
+                setTimeout(() => {
+                    this.loadAndPlay();
+                }, 2000);
+                
+                // Removes the listeners once audio is enabled
+                document.removeEventListener('click', enableAudio);
+                document.removeEventListener('keydown', enableAudio);
+                document.removeEventListener('scroll', enableAudio);
+                document.removeEventListener('mousemove', enableAudio);
+            }
+        };
+        
+        // Listens for various user interactions
+        document.addEventListener('click', enableAudio);
+        document.addEventListener('keydown', enableAudio);
+        document.addEventListener('scroll', enableAudio);
+        document.addEventListener('mousemove', enableAudio);
+    }
+    
+    loadAndPlay() {
+        const currentTrack = this.playQueue[this.currentTrackIndex];
+        // Only loads new track if it's different from current
+        if (this.audio.src !== window.location.origin + '/' + currentTrack) {
+            this.audio.src = currentTrack;
+            this.audio.load();
+            this.showNowPlaying(currentTrack);
+        } else if (this.isPaused) {
+            // If same track and paused, just resume
+            this.audio.play().catch(e => {
+                console.log('Audio play failed:', e);
+            });
+            return;
+        }
+    }
+    
+    handleCanPlay() {
+        if (this.hasStarted && !this.isMuted) {
+            this.audio.play().catch(e => {
+                console.log('Audio play failed:', e);
+            });
+        }
+    }
+    
+    handleError(e) {
+        console.error('Audio error:', e);
+        this.playNext(); // Skips to next track on error
+    }
+    
+    playNext() {
+        this.currentTrackIndex = (this.currentTrackIndex + 1) % this.playQueue.length;
+        
+        // If we've finished all tracks, reshuffle the playlist
+        if (this.currentTrackIndex === 0) {
+            this.createShuffledPlaylist();
+        }
+        
+        if (this.hasStarted && !this.isMuted) {
+            this.loadAndPlay();
+        }
+    }
+    
+    playPrevious() {
+        // If we're more than 3 seconds into the song, restart current song
+        if (this.audio.currentTime > 3) {
+            this.audio.currentTime = 0;
+            return;
+        }
+        
+        // Otherwise go to previous track
+        this.currentTrackIndex = (this.currentTrackIndex - 1 + this.playQueue.length) % this.playQueue.length;
+        
+        if (this.hasStarted && !this.isMuted) {
+            this.loadAndPlay();
+        }
+    }
+    
+    toggleAudio() {
+        if (!this.hasStarted) {
+            // First time - start the system
+            this.hasStarted = true;
+            this.isMuted = false;
+            this.loadAndPlay();
+            return;
+        }
+        
+        if (this.isMuted) {
+            // Currently muted - unmute and resume/start
+            this.isMuted = false;
+            if (this.isPaused) {
+                this.audio.play().catch(e => {
+                    console.log('Audio play failed:', e);
+                });
+            } else {
+                this.loadAndPlay();
+            }
+        } else {
+            // Currently playing - pause/mute
+            this.isMuted = true;
+            this.audio.pause();
+        }
+        
+        this.updateToggleButton();
+    }
+    
+    updateToggleButton() {
+        if (this.isMuted || (!this.isPlaying && !this.isPaused)) {
+            this.toggleButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            this.toggleButton.classList.add('muted');
+        } else if (this.isPaused) {
+            this.toggleButton.innerHTML = '<i class="fas fa-play"></i>';
+            this.toggleButton.classList.remove('muted');
+        } else {
+            this.toggleButton.innerHTML = '<i class="fas fa-pause"></i>';
+            this.toggleButton.classList.remove('muted');
+        }
+    }
+    
+    showNowPlaying(trackPath) {
+        const fileName = trackPath.split('/').pop();
+        const nameWithoutExtension = fileName.replace('.mp3', '');
+        
+        let trackName, artistCredit;
+        
+        if (nameWithoutExtension.includes(' - ')) {
+            const parts = nameWithoutExtension.split(' - ');
+            artistCredit = parts[0];
+            trackName = parts[1];
+        } else {
+            trackName = nameWithoutExtension;
+            artistCredit = 'Unknown Artist';
+        }
+        
+        const nowPlayingText = this.nowPlayingElement.querySelector('.now-playing-text');
+        nowPlayingText.innerHTML = `
+            <span class="track-name">Now playing: ${trackName}</span>
+            <span class="artist-credit">Credits to ${artistCredit}</span>
+        `;
+        
+        // Clear any existing timer
+        if (this.nowPlayingTimer) {
+            clearTimeout(this.nowPlayingTimer);
+        }
+        
+        // Show notification
+        this.nowPlayingElement.classList.add('show');
+        
+        // Hide after 4 seconds
+        this.nowPlayingTimer = setTimeout(() => {
+            this.nowPlayingElement.classList.remove('show');
+            this.nowPlayingTimer = null;
+        }, 4000);
+    }
+}
+
+// Initialize audio system when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new AudioSystem();
+});
+
+// Add click sound effect to buttons and links
+document.addEventListener('DOMContentLoaded', () => {
+    // You can add click sound effects here if desired
+    const clickableElements = document.querySelectorAll('a, button, .btn');
+    
+    clickableElements.forEach(element => {
+        element.addEventListener('click', () => {
+            // Optional: add a subtle click sound effect here
+            // const clickSound = new Audio('audio/click.mp3');
+            // clickSound.volume = 0.1;
+            // clickSound.play().catch(() => {});
+        });
+    });
+});
