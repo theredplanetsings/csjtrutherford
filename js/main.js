@@ -379,7 +379,7 @@ function openPDFModal(pdfUrl, title) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    // Handle PDF load error
+    // Handles PDF load error
     pdfEmbed.onerror = function() {
         pdfEmbed.style.display = 'none';
         pdfFallback.style.display = 'flex';
@@ -404,7 +404,7 @@ function closePDFModal() {
     modal.classList.remove('active', 'fullscreen');
     document.body.style.overflow = 'auto';
     
-    // Clear PDF source
+    // clears PDF source
     setTimeout(() => {
         pdfEmbed.src = '';
     }, 300);
@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pdfContainer = document.querySelector('.pdf-container');
     const modal = document.getElementById('pdfModal');
     
-    // Zoom In
+    // zoom in
     zoomInBtn.addEventListener('click', function() {
         if (currentZoom < 200) {
             currentZoom += 25;
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Fullscreen Toggle
+    // toggles fullscreen
     fullscreenBtn.addEventListener('click', function() {
         modal.classList.toggle('fullscreen');
         const icon = fullscreenBtn.querySelector('i');
@@ -453,14 +453,14 @@ document.addEventListener('DOMContentLoaded', function() {
             fullscreenBtn.title = 'Fullscreen';
         }
     });
-    // Close modal on Escape key
+    // close the modal on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closePDFModal();
         }
     });
     
-    // Prevent modal from closing when clicking inside the content
+    // prevents the modal from closing when clicking inside the content
     document.querySelector('.pdf-modal-content').addEventListener('click', function(e) {
         e.stopPropagation();
     });
@@ -485,7 +485,7 @@ function applyZoom() {
     }
 }
 
-// Audio System
+// the audio system
 class AudioSystem {
     constructor() {
         this.tracks = [
@@ -506,7 +506,7 @@ class AudioSystem {
         this.hasStarted = false;
         this.nowPlayingTimer = null; // Track the notification timer
         
-        // Debug: Check if audio elements exist
+        // Debug logs: Check if audio elements exist
         console.log('Audio system: Initializing...');
         console.log('Audio element found:', !!this.audio);
         console.log('Toggle button found:', !!this.toggleButton);
@@ -516,7 +516,7 @@ class AudioSystem {
     }
     
     init() {
-        // Check if audio element exists
+        // Checks if audio element exists
         if (!this.audio) {
             console.error('Audio system: Audio element with ID "ambientAudio" not found! Make sure you have an <audio> element with id="ambientAudio" in your HTML.');
             return;
@@ -527,7 +527,7 @@ class AudioSystem {
         
         // Sets up our audio element
         this.audio.volume = 0.3; // we start at 30% volume
-        this.audio.muted = false; // Ensure audio starts unmuted
+        this.audio.muted = false; // Ensures audio starts unmuted
         this.audio.loop = false; // Handles audio looping manually
         console.log('Audio system: Audio element configured - Volume:', this.audio.volume, 'Muted:', this.audio.muted);
         
@@ -633,7 +633,7 @@ class AudioSystem {
     handleCanPlay() {
         console.log('Audio system: canplaythrough event fired, hasStarted:', this.hasStarted, 'isMuted:', this.isMuted, 'audio.muted:', this.audio.muted);
         if (this.hasStarted) {
-            // Ensure mute state is properly set
+            // Ensures mute state is properly set
             this.audio.muted = this.isMuted;
             this.audio.play().catch(e => {
                 console.log('Audio play failed in handleCanPlay:', e);
@@ -649,7 +649,7 @@ class AudioSystem {
     playNext() {
         this.currentTrackIndex = (this.currentTrackIndex + 1) % this.playQueue.length;
         
-        // If we've finished all tracks, reshuffle the playlist
+        // once we've finished all tracks, reshuffle the playlist
         if (this.currentTrackIndex === 0) {
             this.createShuffledPlaylist();
         }
