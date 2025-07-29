@@ -11,6 +11,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - Animated typing effect for hero title with smooth font loading
 - Interactive Three.js grid background with mouse-responsive animations on desktop and subtle jiggle animation on mobile
 - Ambient audio system with shuffled background music, track notifications, and intuitive controls
+- Interactive click sound effects for all buttons, links, and interactive elements
 - Custom animated cursor for enhanced user experience
 - Comprehensive favicon support with multiple sizes and formats for all devices
 - Fully responsive design optimised for desktop and mobile
@@ -35,7 +36,8 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 │   ├── three-grid.js      # Three.js animated grid background with mouse interaction
 │   └── three.module.js    # Three.js library module
 ├── audio/
-│   └── ambient tracks     # background music files for audio system
+│   ├── ambient tracks     # Background music files for audio system
+│   └── click.mp3          # sound effect for interactive elements
 ├── images/
 │   └── icons and assets   # visual assets and favicon collection
 ├── papers/
@@ -105,6 +107,8 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - Adjust Three.js grid parameters in `three-grid.js` for different effects
 - Customise audio tracks by replacing files in the `audio/` directory (MP3 format recommended)
 - Modify audio system settings (volume, notification duration) in `main.js`
+- Replace `audio/click.mp3` with your preferred click sound effect
+- Adjust click sound volume or disable by modifying the click sound section in `main.js`
 - Add or remove navigation items as needed
 - Update scroll-triggered animations in `main.js` for new sections
 - Replace PDF files in the `papers/` directory as required
@@ -154,6 +158,7 @@ Modern JavaScript features used: Fetch API, Intersection Observer, CSS Grid
 
 - Three.js grid optimised for 60fps with requestAnimationFrame and efficient geometry handling; mobile devices receive performance-optimised jiggle animation instead of mouse interaction
 - Audio system designed for browser autoplay compliance with user interaction detection and efficient playlist management
+- Click sound effects optimised with audio preloading and error handling for seamless user interaction feedback
 - Mobile detection ensures optimal experience across all devices
 - Preconnected Google Fonts with font-display: swap for improved loading performance
 - Images optimised for web with fallback placeholders and error handling
