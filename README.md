@@ -10,6 +10,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 
 - Animated typing effect for hero title with smooth font loading
 - Interactive Three.js grid background with mouse-responsive animations on desktop and subtle jiggle animation on mobile
+- Ambient audio system with shuffled background music, track notifications, and intuitive controls
 - Custom animated cursor for enhanced user experience
 - Comprehensive favicon support with multiple sizes and formats for all devices
 - Fully responsive design optimised for desktop and mobile
@@ -28,15 +29,17 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 ```
 ├── index.html              # Main HTML file with comprehensive portfolio sections
 ├── css/
-│   └── style.css          # Complete stylesheet with animations and responsive design
+│   └── style.css          # stylesheet
 ├── js/
-│   ├── main.js            # Core functionalities
+│   ├── main.js            # core functionalities
 │   ├── three-grid.js      # Three.js animated grid background with mouse interaction
 │   └── three.module.js    # Three.js library module
+├── audio/
+│   └── ambient tracks     # background music files for audio system
 ├── images/
-│   ├── icons and related assets
+│   └── icons and assets   # visual assets and favicon collection
 ├── papers/
-│   ├── writing samples and certifications
+│   └── academic works     # writing samples & certifications
 ├── README.md              # This document
 └── LICENSE                # MIT Licence
 ```
@@ -60,6 +63,7 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 
 - **Frontend:** HTML5, CSS3, JavaScript (ES6+)
 - **3D Graphics:** Three.js for interactive background animations
+- **Audio:** HTML5 Audio API with custom controls and playlist management
 - **Fonts:** Google Fonts (Inter family with weights 300-900)
 - **Icons:** Font Awesome 6.0
 - **Form Handling:** Formspree for contact form email delivery
@@ -99,6 +103,8 @@ Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js ba
 - Update the Formspree endpoint in the contact form action attribute
 - Change social links in the hero and contact sections
 - Adjust Three.js grid parameters in `three-grid.js` for different effects
+- Customise audio tracks by replacing files in the `audio/` directory (MP3 format recommended)
+- Modify audio system settings (volume, notification duration) in `main.js`
 - Add or remove navigation items as needed
 - Update scroll-triggered animations in `main.js` for new sections
 - Replace PDF files in the `papers/` directory as required
@@ -147,9 +153,10 @@ Modern JavaScript features used: Fetch API, Intersection Observer, CSS Grid
 ## Performance Notes
 
 - Three.js grid optimised for 60fps with requestAnimationFrame and efficient geometry handling; mobile devices receive performance-optimised jiggle animation instead of mouse interaction
+- Audio system designed for browser autoplay compliance with user interaction detection and efficient playlist management
 - Mobile detection ensures optimal experience across all devices
 - Preconnected Google Fonts with font-display: swap for improved loading performance
-- Images optimised for web with fallback placeholders, error handling, and lazy loading considerations
+- Images optimised for web with fallback placeholders and error handling
 - CSS organised and optimised for fast loading with efficient selectors and minimal reflow
 - JavaScript uses modern ES6+ with progressive enhancement, intersection observers, and debounced scroll listeners
 - Responsive design with a mobile-first approach and efficient media queries
