@@ -496,7 +496,6 @@ class AudioSystem {
         ];
         this.currentTrackIndex = 0;
         this.isPlaying = false;
-        this.isPaused = false;
         this.isMuted = false;
         this.audio = document.getElementById('ambientAudio');
         this.toggleButton = document.getElementById('toggleAudio');
@@ -507,47 +506,65 @@ class AudioSystem {
         this.hasStarted = false;
         this.nowPlayingTimer = null; // Track the notification timer
         
+        // Debug: Check if audio elements exist
+        console.log('Audio system: Initializing...');
+        console.log('Audio element found:', !!this.audio);
+        console.log('Toggle button found:', !!this.toggleButton);
+        console.log('Audio tracks:', this.tracks);
+        
         this.init();
     }
     
     init() {
+        // Check if audio element exists
+        if (!this.audio) {
+            console.error('Audio system: Audio element with ID "ambientAudio" not found! Make sure you have an <audio> element with id="ambientAudio" in your HTML.');
+            return;
+        }
+        
         // Creates shuffled playlist
         this.createShuffledPlaylist();
         
         // Sets up our audio element
         this.audio.volume = 0.3; // we start at 30% volume
+        this.audio.muted = false; // Ensure audio starts unmuted
         this.audio.loop = false; // Handles audio looping manually
+        console.log('Audio system: Audio element configured - Volume:', this.audio.volume, 'Muted:', this.audio.muted);
         
         // Our event listeners
         this.audio.addEventListener('ended', () => this.playNext());
         this.audio.addEventListener('canplaythrough', () => this.handleCanPlay());
         this.audio.addEventListener('error', (e) => this.handleError(e));
         this.audio.addEventListener('play', () => {
+            console.log('Audio system: Play event fired');
             this.isPlaying = true;
-            this.isPaused = false;
             this.updateToggleButton();
         });
         this.audio.addEventListener('pause', () => {
+            console.log('Audio system: Pause event fired');
             this.isPlaying = false;
-            this.isPaused = true;
             this.updateToggleButton();
         });
         this.audio.addEventListener('loadstart', () => {
-            // Ensure volume stays at 30% when loading new tracks
+            console.log('Audio system: Loadstart event fired');
+            // Ensures volume stays at 30% when loading new tracks
             this.audio.volume = 0.3;
         });
         
-        // Control buttons
+        // the control buttons
         this.toggleButton.addEventListener('click', () => this.toggleAudio());
         this.prevButton.addEventListener('click', () => this.playPrevious());
         this.nextButton.addEventListener('click', () => this.playNext());
         
-        // Auto-start after user interaction
+        // Set initial button state
+        this.updateToggleButton();
+        
+        // Auto-starts after user interaction
         this.setupAutoStart();
     }
     
     createShuffledPlaylist() {
-        // Create a shuffled version of tracks
+        // creates a shuffled version of tracks
         this.playQueue = [...this.tracks];
         for (let i = this.playQueue.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -557,50 +574,69 @@ class AudioSystem {
     }
     
     setupAutoStart() {
-        // Waits for any user interaction to enable audio
-        const enableAudio = () => {
+        // Waits for any REAL user interaction to enable audio (clicks and key presses only)
+        const enableAudio = (e) => {
             if (!this.hasStarted) {
+                console.log('Audio system: Real user interaction detected (', e.type, '), starting in 2 seconds...');
                 this.hasStarted = true;
                 // Starts playing after 2 seconds of user interaction
                 setTimeout(() => {
+                    console.log('Audio system: Attempting to start playback...');
                     this.loadAndPlay();
                 }, 2000);
                 
                 // Removes the listeners once audio is enabled
                 document.removeEventListener('click', enableAudio);
                 document.removeEventListener('keydown', enableAudio);
-                document.removeEventListener('scroll', enableAudio);
-                document.removeEventListener('mousemove', enableAudio);
             }
         };
         
-        // Listens for various user interactions
+        // Only listens for clicks and key presses (browsers consider these valid user interactions)
         document.addEventListener('click', enableAudio);
         document.addEventListener('keydown', enableAudio);
-        document.addEventListener('scroll', enableAudio);
-        document.addEventListener('mousemove', enableAudio);
     }
     
     loadAndPlay() {
         const currentTrack = this.playQueue[this.currentTrackIndex];
-        // Only loads new track if it's different from current
+        console.log('Audio system: Loading track:', currentTrack);
+        console.log('Audio system: Current audio src:', this.audio.src);
+        console.log('Audio system: Expected src:', window.location.origin + '/' + currentTrack);
+        
+        // only loads new track if it's different from current
         if (this.audio.src !== window.location.origin + '/' + currentTrack) {
+            console.log('Audio system: Setting new audio source...');
             this.audio.src = currentTrack;
             this.audio.load();
             this.showNowPlaying(currentTrack);
-        } else if (this.isPaused) {
-            // If same track and paused, just resume
-            this.audio.play().catch(e => {
-                console.log('Audio play failed:', e);
-            });
-            return;
+            
+            // tries to play immediately after loading
+            if (this.hasStarted) {
+                console.log('Audio system: Attempting to play audio...');
+                // waits a moment for the audio to be ready, then play
+                setTimeout(() => {
+                    // Ensure mute state is properly set
+                    this.audio.muted = this.isMuted;
+                    console.log('Audio system: Volume:', this.audio.volume, 'Muted:', this.audio.muted);
+                    this.audio.play().then(() => {
+                        console.log('Audio system: Play succeeded!');
+                    }).catch(e => {
+                        console.log('Audio system: Initial audio play failed:', e);
+                        // if immediate play fails, wait for "canplaythrough" event
+                    });
+                }, 100);
+            }
+        } else {
+            console.log('Audio system: Same track already loaded, skipping load');
         }
     }
     
     handleCanPlay() {
-        if (this.hasStarted && !this.isMuted) {
+        console.log('Audio system: canplaythrough event fired, hasStarted:', this.hasStarted, 'isMuted:', this.isMuted, 'audio.muted:', this.audio.muted);
+        if (this.hasStarted) {
+            // Ensure mute state is properly set
+            this.audio.muted = this.isMuted;
             this.audio.play().catch(e => {
-                console.log('Audio play failed:', e);
+                console.log('Audio play failed in handleCanPlay:', e);
             });
         }
     }
@@ -618,7 +654,7 @@ class AudioSystem {
             this.createShuffledPlaylist();
         }
         
-        if (this.hasStarted && !this.isMuted) {
+        if (this.hasStarted) {
             this.loadAndPlay();
         }
     }
@@ -633,49 +669,45 @@ class AudioSystem {
         // Otherwise go to previous track
         this.currentTrackIndex = (this.currentTrackIndex - 1 + this.playQueue.length) % this.playQueue.length;
         
-        if (this.hasStarted && !this.isMuted) {
+        if (this.hasStarted) {
             this.loadAndPlay();
         }
     }
     
     toggleAudio() {
+        console.log('Audio system: Toggle button clicked, hasStarted:', this.hasStarted, 'isMuted:', this.isMuted);
+        
         if (!this.hasStarted) {
             // First time - start the system
+            console.log('Audio system: Starting system manually via button click...');
             this.hasStarted = true;
             this.isMuted = false;
             this.loadAndPlay();
             return;
         }
         
-        if (this.isMuted) {
-            // Currently muted - unmute and resume/start
-            this.isMuted = false;
-            if (this.isPaused) {
-                this.audio.play().catch(e => {
-                    console.log('Audio play failed:', e);
-                });
-            } else {
-                this.loadAndPlay();
-            }
-        } else {
-            // Currently playing - pause/mute
-            this.isMuted = true;
-            this.audio.pause();
-        }
+        // Toggle mute/unmute - audio keeps playing in background
+        this.isMuted = !this.isMuted;
+        this.audio.muted = this.isMuted;
+        console.log('Audio system: Toggled mute state to:', this.isMuted);
         
         this.updateToggleButton();
     }
     
     updateToggleButton() {
-        if (this.isMuted || (!this.isPlaying && !this.isPaused)) {
-            this.toggleButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
-            this.toggleButton.classList.add('muted');
-        } else if (this.isPaused) {
+        if (!this.hasStarted) {
+            // Show a play icon when audio hasn't started yet
             this.toggleButton.innerHTML = '<i class="fas fa-play"></i>';
             this.toggleButton.classList.remove('muted');
+            this.toggleButton.title = 'Start ambient audio';
+        } else if (this.isMuted) {
+            this.toggleButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            this.toggleButton.classList.add('muted');
+            this.toggleButton.title = 'Unmute audio';
         } else {
-            this.toggleButton.innerHTML = '<i class="fas fa-pause"></i>';
+            this.toggleButton.innerHTML = '<i class="fas fa-volume-up"></i>';
             this.toggleButton.classList.remove('muted');
+            this.toggleButton.title = 'Mute audio';
         }
     }
     
@@ -718,6 +750,24 @@ class AudioSystem {
 
 // Initialize audio system when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Test if audio elements exist before creating AudioSystem
+    const testAudio = document.getElementById('ambientAudio');
+    const testToggle = document.getElementById('toggleAudio');
+    
+    console.log('DOM loaded - Audio element test:', !!testAudio);
+    console.log('DOM loaded - Toggle button test:', !!testToggle);
+    
+    if (!testAudio) {
+        console.error('CRITICAL: Audio element with ID "ambientAudio" not found in DOM!');
+        return;
+    }
+    
+    if (!testToggle) {
+        console.error('CRITICAL: Toggle button with ID "toggleAudio" not found in DOM!');
+        return;
+    }
+    
+    // Create audio system if elements exist
     new AudioSystem();
 });
 
