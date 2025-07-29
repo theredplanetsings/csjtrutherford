@@ -1,8 +1,8 @@
 # Personal Portfolio
 
-Portfolio showcasing academic achievements, technical skills, and professional experience of a Computer Science student with interests in national security, quantitative finance, and open-source intelligence (OSINT).
+A modern portfolio website showcasing academic achievements, technical skills, and professional experience of a Computer Science student with interests in national security, quantitative finance, and open-source intelligence (OSINT).
 
-Built with modern HTML, CSS, and JavaScript, and an interactive Three.js background
+Built with modern HTML, CSS, and JavaScript featuring an interactive Three.js background.
 
 **Live Site:** https://theredplanetsings.github.io/csjtrutherford/
 
@@ -15,7 +15,6 @@ Built with modern HTML, CSS, and JavaScript, and an interactive Three.js backgro
 - Fully responsive design optimised for desktop and mobile
 - Working contact form with Formspree integration and email delivery
 - PDF modal viewer with zoom controls, fullscreen mode, and download functionality
-- Comprehensive content sections including education, experience, volunteering, organisations, languages, honours, and writing samples
 - Project showcase with live demos and source code links
 - Skills categorisation including programming languages, technologies, and soft skills
 - Timeline layouts for education and professional experience
@@ -44,27 +43,27 @@ Built with modern HTML, CSS, and JavaScript, and an interactive Three.js backgro
 
 ## Content Sections
 
-- Hero Section – Animated introduction with typing effect
-- About – Professional summary with focus on Computer Science & Russian Studies, national security interests, and statistical achievements
-- Education – Academic background including Davidson College, University of York, and Azerbaijan University of Languages with detailed coursework
-- Experience – Professional roles including IT internship, research, NCAA Division I wrestling, and officiating
-- Skills – Technical and soft skills organised by category (Languages, Libraries & Technologies, Tools & Frameworks, Soft Skills including multilingual capabilities)
-- Volunteering & Leadership – Eagle Scout, Young Marines (Gunnery Sergeant), coaching, and community service with achievement recognition
-- Organisations – Mensa Society and QuestBridge membership with detailed descriptions
-- Languages – English (native), Russian (C1), Azerbaijani (B1) with visual proficiency indicators and learning context
-- Honours, Awards, & Certifications – Academic scholarships, leadership recognition, language certifications, and achievements with credential verification links
-- Writing Samples – Academic papers on international relations and financial markets with integrated PDF viewer
-- Projects – Technical projects including options pricing dashboard, shell implementation, automation tools, and more, with live demos and source code repositories
-- Contact – Working contact form and social media links
+- **Hero Section** – Animated introduction with typing effect
+- **About** – Professional summary with focus on Computer Science & Russian Studies, national security interests, and statistical achievements
+- **Education** – Academic background with detailed coursework
+- **Experience** – Professional roles including IT internship, research, athletic achievements, and officiating
+- **Skills** – Technical and soft skills organised by category (Languages, Libraries & Technologies, Tools & Frameworks, Soft Skills including multilingual capabilities)
+- **Volunteering & Leadership** – Scouting achievements, military training, coaching, and community service with achievement recognition
+- **Organisations** – Society memberships with detailed descriptions
+- **Languages** – English (native), Russian (C1), Azerbaijani (B1) with visual proficiency indicators and learning context
+- **Honours, Awards, & Certifications** – Academic scholarships, leadership recognition, language certifications, and achievements with credential verification links
+- **Writing Samples** – Academic papers on international relations and financial markets with integrated PDF viewer
+- **Projects** – Technical projects including options pricing dashboard, shell implementation, automation tools, and more, with live demos and source code repositories
+- **Contact** – Working contact form and social media links
 
 ## Technologies Used
 
-- Frontend: HTML5, CSS3, JavaScript (ES6+)
-- 3D Graphics: Three.js for interactive background animations
-- Fonts: Google Fonts (Inter family with weights 300-900)
-- Icons: Font Awesome 6.0
-- Form Handling: Formspree for contact form email delivery
-- Hosting: GitHub Pages
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **3D Graphics:** Three.js for interactive background animations
+- **Fonts:** Google Fonts (Inter family with weights 300-900)
+- **Icons:** Font Awesome 6.0
+- **Form Handling:** Formspree for contact form email delivery
+- **Hosting:** GitHub Pages
 
 ## Quick Start
 
@@ -91,22 +90,22 @@ Built with modern HTML, CSS, and JavaScript, and an interactive Three.js backgro
 ## Customisation Guide
 
 ### Content Updates
-- Update personal information, biography, education, experience, skills, volunteering, languages, honours, writing samples, and projects directly in `index.html`.
+- Update personal information, biography, education, experience, skills, volunteering, languages, honours, writing samples, and projects directly in `index.html`
 
 ### Styling Changes
-- Modify colours, fonts, and animations in `css/style.css` and the relevant HTML/JS files.
+- Modify colours, fonts, and animations in `css/style.css` and the relevant HTML/JS files
 
 ### Functionality Modifications
-- Update the Formspree endpoint in the contact form action attribute.
-- Change social links in the hero and contact sections.
-- Adjust Three.js grid parameters in `three-grid.js` for different effects.
-- Add or remove navigation items as needed.
-- Update scroll-triggered animations in `main.js` for new sections.
-- Replace PDF files in the `papers/` directory as required.
+- Update the Formspree endpoint in the contact form action attribute
+- Change social links in the hero and contact sections
+- Adjust Three.js grid parameters in `three-grid.js` for different effects
+- Add or remove navigation items as needed
+- Update scroll-triggered animations in `main.js` for new sections
+- Replace PDF files in the `papers/` directory as required
 
 ### Assets
-- Replace `images/pfp.jpg` with a preferred profile image (recommended: 400x400px square format).
-- Add PDF documents to the `papers/` directory for academic papers and certificates.
+- Replace `images/pfp.jpg` with a preferred profile image (recommended: 400x400px square format)
+- Add PDF documents to the `papers/` directory for academic papers and certificates
 - Favicon package includes:
   - `favicon.ico` – Standard ICO format for legacy browsers
   - `favicon-16x16.png` and `favicon-32x32.png` – Modern PNG favicons
@@ -169,5 +168,3 @@ This is a personal portfolio template. You are welcome to:
 ## Licence
 
 This project is open source under the MIT Licence. See the `LICENSE` file for full details.
-
-Contact: [GitHub](https://github.com/theredplanetsings) | [LinkedIn](https://www.linkedin.com/in/csjtrutherford)
