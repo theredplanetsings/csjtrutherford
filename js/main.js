@@ -114,40 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Contact form handling - Let Formspree handle everything
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    // Just basic client-side validation, no form submission handling
-    contactForm.addEventListener('submit', function(e) {
-        const name = this.querySelector('input[name="name"]').value.trim();
-        const email = this.querySelector('input[name="email"]').value.trim();
-        const message = this.querySelector('textarea[name="message"]').value.trim();
-        
-        // Basic validation
-        if (!name || !email || !message) {
-            e.preventDefault();
-            alert('Please fill in all fields.');
-            return false;
-        }
-        
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            e.preventDefault();
-            alert('Please enter a valid email address.');
-            return false;
-        }
-        
-        // Show sending state but let form submit naturally
-        const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
-        
-        // Let form submit to Formspree - no preventDefault()
-        return true;
-    });
-}
-
 // Typing effect for hero title
 function typeWriter(element, text, speed = 80) {
     let i = 0;
