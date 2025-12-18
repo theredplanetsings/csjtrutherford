@@ -97,11 +97,11 @@ function initGrid() {
 
         function animate() {
             const pos = geometry.attributes.position.array;
-            const time = Date.now() * 0.001; // Time for mobile animation
+            const time = Date.now() * 0.001;
             
             for (let i = 0; i < points.length; i++) {
                 if (isMobile) {
-                    // Mobile: gentle jiggle animation
+                    // Mobile - a "jiggle" animation
                     const jiggleAmplitude = 0.1;
                     const jiggleSpeed = 0.5;
                     const offsetX = (Math.sin(time * jiggleSpeed + i * 0.1) + Math.cos(time * jiggleSpeed * 0.7 + i * 0.2)) * jiggleAmplitude;
@@ -110,7 +110,7 @@ function initGrid() {
                     pos[i * 3] = basePositions[i * 3] + offsetX;
                     pos[i * 3 + 1] = basePositions[i * 3 + 1] + offsetY;
                 } else if (effectActive) {
-                    // Desktop: mouse interaction (only if effect is active)
+                    // Desktop - mouse interaction (only when effect is active)
                     // Project mouse to grid space using correct grid size
                     const mx = mouse.x * ((gridCols - 1) * spacing) / 2;
                     const my = mouse.y * ((gridRows - 1) * spacing) / 2;
@@ -128,7 +128,7 @@ function initGrid() {
                         pos[i * 3 + 1] += (basePositions[i * 3 + 1] - pos[i * 3 + 1]) * 0.08;
                     }
                 } else {
-                    // Desktop: Keep points at base positions until effect is activated
+                    // Desktop - Keep points at base positions until effect is activated
                     pos[i * 3] = basePositions[i * 3];
                     pos[i * 3 + 1] = basePositions[i * 3 + 1];
                 }
@@ -145,12 +145,12 @@ function initGrid() {
             renderer.setSize(width, height);
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
-            createGrid(); // Regenerate grid to fit new size
+            createGrid();
         }
 
         window.addEventListener('resize', resizeGrid);
 
-        // After hero and renderer are created, call resizeGrid to ensure correct initial sizing
+        // After hero & renderer are created we call resizeGrid to ensure correct initial sizing
         resizeGrid();
 
         console.log('Three.js grid initialised successfully');
