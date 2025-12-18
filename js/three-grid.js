@@ -79,6 +79,7 @@ function initGrid() {
 
         // Mouse interaction for desktop
         let mouse = { x: 0, y: 0 };
+        let effectActive = false;
         
         if (!isMobile) {
             window.addEventListener('mousemove', (e) => {
@@ -86,6 +87,11 @@ function initGrid() {
                 // Use rect.width/height for correct scaling, not hero.offsetWidth/offsetHeight
                 mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
                 mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                
+                // we turn on on first mouse movement
+                if (!effectActive) {
+                    effectActive = true;
+                }
             });
         }
 
@@ -103,8 +109,8 @@ function initGrid() {
                     
                     pos[i * 3] = basePositions[i * 3] + offsetX;
                     pos[i * 3 + 1] = basePositions[i * 3 + 1] + offsetY;
-                } else {
-                    // Desktop: mouse interaction
+                } else if (effectActive) {
+                    // Desktop: mouse interaction (only if effect is active)
                     // Project mouse to grid space using correct grid size
                     const mx = mouse.x * ((gridCols - 1) * spacing) / 2;
                     const my = mouse.y * ((gridRows - 1) * spacing) / 2;
@@ -121,6 +127,10 @@ function initGrid() {
                         pos[i * 3] += (basePositions[i * 3] - pos[i * 3]) * 0.08;
                         pos[i * 3 + 1] += (basePositions[i * 3 + 1] - pos[i * 3 + 1]) * 0.08;
                     }
+                } else {
+                    // Desktop: Keep points at base positions until effect is activated
+                    pos[i * 3] = basePositions[i * 3];
+                    pos[i * 3 + 1] = basePositions[i * 3 + 1];
                 }
             }
             geometry.attributes.position.needsUpdate = true;
