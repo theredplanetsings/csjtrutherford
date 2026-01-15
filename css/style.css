@@ -1287,13 +1287,11 @@ body::-webkit-scrollbar {
     font-weight: 500;
 }
 
-/* Center last skill card when odd number in row */
 .skills-grid > .skill-category:last-child:nth-child(odd) {
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Contact Section */
 .contact {
     padding: 5rem 0;
 }
@@ -1394,7 +1392,6 @@ body::-webkit-scrollbar {
     min-height: 120px;
 }
 
-/* Footer */
 .footer {
     background: rgba(15, 15, 15, 0.95);
     color: white;
@@ -1411,7 +1408,6 @@ body::-webkit-scrollbar {
     text-align: center;
 }
 
-/* Footer links */
 .footer-links {
     display: flex;
     gap: 2rem;
@@ -1427,7 +1423,6 @@ body::-webkit-scrollbar {
     color: white;
 }
 
-/* Custom cursor */
 .cursor {
     position: fixed;
     top: 0;
@@ -1455,7 +1450,7 @@ body::-webkit-scrollbar {
     transition: all 0.15s ease-out;
 }
 
-/* Cursor hover effects */
+
 .cursor.hover {
     transform: scale(1.5);
     background: linear-gradient(135deg, #ffffff 0%, #dc2626 100%);
@@ -1466,17 +1461,12 @@ body::-webkit-scrollbar {
     border-color: rgba(255, 255, 255, 0.6);
 }
 
-/* Re-enables cursor for specific elements that need it */
 input, textarea, select {
     cursor: text !important;
 }
-
-/* Only keep this for accessibility, not for all a/button */
 .clickable {
     cursor: pointer !important;
 }
-
-/* PDF Modal Styles */
 .pdf-modal {
     display: none;
     position: fixed;
@@ -1655,7 +1645,6 @@ input, textarea, select {
     z-index: -1;
 }
 
-/* Fullscreen styles */
 .pdf-modal.fullscreen {
     background: rgba(0, 0, 0, 0.95);
 }
@@ -1666,8 +1655,6 @@ input, textarea, select {
     max-width: none;
     border-radius: 0;
 }
-
-/* Responsive Design for PDF Modal */
 @media (max-width: 768px) {
     .pdf-modal-content {
         width: 95%;
@@ -1723,7 +1710,7 @@ input, textarea, select {
     }
 }
 
-/* Mobile Navigation */
+/* mobile navigation */
 @media (max-width: 900px) {
   html, body {
     width: 100vw;
