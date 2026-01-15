@@ -1929,7 +1929,6 @@ input, textarea, select {
     transform: scale(1.1);
 }
 
-/* Now Playing Notification */
 .now-playing {
     position: fixed;
     bottom: 30px;
@@ -1973,8 +1972,6 @@ input, textarea, select {
     font-size: 12px;
     color: #94a3b8;
 }
-
-/* Responsive adjustments for audio system */
 @media (max-width: 768px) {
     .audio-controls {
         bottom: 20px;
