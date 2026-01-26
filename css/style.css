@@ -153,7 +153,8 @@ body::-webkit-scrollbar {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #0f0f0f 0%, #1f1f1f 50%, #dc2626 100%);
+    /*background: linear-gradient(135deg, #0f0f0f 0%, #1f1f1f 50%, #dc2626 100%);*/
+    background: #1c1919;
     color: white;
     position: relative;
     overflow: hidden;
