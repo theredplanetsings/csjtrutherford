@@ -126,7 +126,7 @@ function initGrid() {
                         pos[i * 3 + 1] += (basePositions[i * 3 + 1] - pos[i * 3 + 1]) * 0.08;
                     }
                 } else {
-                    // desktop - Keep points at base positions until effect is activated
+                    // desktop - keep points at base positions until effect is activated
                     pos[i * 3] = basePositions[i * 3];
                     pos[i * 3 + 1] = basePositions[i * 3 + 1];
                 }
