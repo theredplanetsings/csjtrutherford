@@ -33,7 +33,7 @@ function initGrid() {
         const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
         camera.position.z = 50;
 
-        // Grid parameters
+        // our grid params
         let gridRows = 40; // change for more rows
         let gridCols = 80; // change for more columns
         const spacing = 1.2; // spacing between points
