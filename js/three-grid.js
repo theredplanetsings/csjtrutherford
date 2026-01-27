@@ -1,7 +1,5 @@
-// Three.js interactive grid background for hero section
+// three-grid.js for gravity grid effect
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.module.js';
-
-// Wait for DOM to be fully loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initGrid);
 } else {
@@ -19,7 +17,7 @@ function initGrid() {
         const width = hero.offsetWidth;
         const height = hero.offsetHeight;
 
-        // Create renderer
+        // creates renderer
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setClearColor(0x000000, 0); // transparent
         renderer.setSize(width, height);
@@ -30,20 +28,20 @@ function initGrid() {
         renderer.domElement.style.zIndex = '1';
         hero.appendChild(renderer.domElement);
 
-        // Create scene and camera
+        // creates scene and camera
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
         camera.position.z = 50;
 
         // Grid parameters
-        let gridRows = 40; // increased from 16
-        let gridCols = 80; // increased from 32
-        const spacing = 1.2; // closer together
+        let gridRows = 40; // change for more rows
+        let gridCols = 80; // change for more columns
+        const spacing = 1.2; // spacing between points
         let points = [];
         let geometry, material, pointCloud, positions, basePositions;
 
         function createGrid() {
-            // Remove old pointCloud if it exists
+            // removes old pointCloud if it exists
             if (pointCloud) {
                 scene.remove(pointCloud);
                 geometry.dispose();
@@ -55,7 +53,7 @@ function initGrid() {
             geometry = new THREE.BufferGeometry();
             for (let y = 0; y < gridRows; y++) {
                 for (let x = 0; x < gridCols; x++) {
-                    // Center grid so (0,0) is at the center of the hero section
+                    // centre grid so (0,0) is at the centre of the hero section
                     const px = (x - (gridCols - 1) / 2) * spacing;
                     const py = (y - (gridRows - 1) / 2) * spacing;
                     positions.push(px, py, 0);
@@ -69,22 +67,21 @@ function initGrid() {
             scene.add(pointCloud);
         }
 
-        // Initial grid creation
         createGrid();
 
-        // Mobile detection
+        // detects mobile users
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
                          (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) ||
                          window.innerWidth <= 768;
 
-        // Mouse interaction for desktop
+        // mouse interaction
         let mouse = { x: 0, y: 0 };
         let effectActive = false;
         
         if (!isMobile) {
             window.addEventListener('mousemove', (e) => {
                 const rect = hero.getBoundingClientRect();
-                // Use rect.width/height for correct scaling, not hero.offsetWidth/offsetHeight
+                // use rect.width/height for correct scaling, not hero.offsetWidth/offsetHeight
                 mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
                 mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
                 
@@ -101,7 +98,7 @@ function initGrid() {
             
             for (let i = 0; i < points.length; i++) {
                 if (isMobile) {
-                    // Mobile - a "jiggle" animation
+                    // on mobile we have a "jiggle" animation
                     const jiggleAmplitude = 0.1;
                     const jiggleSpeed = 0.5;
                     const offsetX = (Math.sin(time * jiggleSpeed + i * 0.1) + Math.cos(time * jiggleSpeed * 0.7 + i * 0.2)) * jiggleAmplitude;
@@ -110,25 +107,25 @@ function initGrid() {
                     pos[i * 3] = basePositions[i * 3] + offsetX;
                     pos[i * 3 + 1] = basePositions[i * 3 + 1] + offsetY;
                 } else if (effectActive) {
-                    // Desktop - mouse interaction (only when effect is active)
-                    // Project mouse to grid space using correct grid size
+                    // on desktop, mouse interaction (only when effect is active)
+                    // project mouse to grid space using correct grid size
                     const mx = mouse.x * ((gridCols - 1) * spacing) / 2;
                     const my = mouse.y * ((gridRows - 1) * spacing) / 2;
                     const dx = basePositions[i * 3] - mx;
                     const dy = basePositions[i * 3 + 1] - my;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    // Push effect - centered under cursor, follows 1:1
+                    // the push effect - centered under cursor, follows 1:1
                     if (dist < 8) {
                         const force = (8 - dist) * 0.7;
                         pos[i * 3] = basePositions[i * 3] + (mx - basePositions[i * 3]) * (force / 8);
                         pos[i * 3 + 1] = basePositions[i * 3 + 1] + (my - basePositions[i * 3 + 1]) * (force / 8);
                     } else {
-                        // Return to base
+                        // return to base
                         pos[i * 3] += (basePositions[i * 3] - pos[i * 3]) * 0.08;
                         pos[i * 3 + 1] += (basePositions[i * 3 + 1] - pos[i * 3 + 1]) * 0.08;
                     }
                 } else {
-                    // Desktop - Keep points at base positions until effect is activated
+                    // desktop - Keep points at base positions until effect is activated
                     pos[i * 3] = basePositions[i * 3];
                     pos[i * 3 + 1] = basePositions[i * 3 + 1];
                 }
@@ -150,7 +147,7 @@ function initGrid() {
 
         window.addEventListener('resize', resizeGrid);
 
-        // After hero & renderer are created we call resizeGrid to ensure correct initial sizing
+        // after hero & renderer are created we call resizeGrid to ensure correct initial sizing
         resizeGrid();
 
         console.log('Three.js grid initialised successfully');
