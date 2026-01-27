@@ -27,21 +27,6 @@ Built with HTML, CSS, and JavaScript featuring an interactive Three.js backgroun
 └── LICENSE                # MIT Licence
 ```
 
-## Content Sections
-
-- **Hero Section** – Animated introduction with typing effect
-- **About** – Professional summary with focus on Computer Science & Russian Studies, national security interests, and statistical achievements
-- **Education** – Academic background with detailed coursework
-- **Experience** – Professional roles including IT internship, research, athletic achievements, and officiating
-- **Skills** – Technical and soft skills organised by category (Languages, Libraries & Technologies, Tools & Frameworks, Soft Skills including multilingual capabilities)
-- **Volunteering & Leadership** – Scouting achievements, military training, coaching, and community service with achievement recognition
-- **Organisations** – Society memberships with detailed descriptions
-- **Languages** – English (native), Russian (C1), Azerbaijani (B1) with visual proficiency indicators and learning context
-- **Honours, Awards, & Certifications** – Academic scholarships, leadership recognition, language certifications, and achievements with credential verification links
-- **Writing Samples** – Academic papers on international relations and financial markets with integrated PDF viewer
-- **Projects** – Technical projects including options pricing dashboard, shell implementation, automation tools, and more, with live demos and source code repositories
-- **Contact** – Working contact form and social media links
-
 ## Tech Used
 
 - **Frontend:** HTML5, CSS3, JavaScript (ES6+)
