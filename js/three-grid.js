@@ -62,7 +62,8 @@ function initGrid() {
                 }
             }
             geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-            material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, opacity: 0.5, transparent: true });
+            //grid dots style settings
+            material = new THREE.PointsMaterial({ color: 0x4d0303, size: 0.3, opacity: 1, transparent: true });
             pointCloud = new THREE.Points(geometry, material);
             scene.add(pointCloud);
         }
