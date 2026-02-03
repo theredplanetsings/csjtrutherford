@@ -1162,6 +1162,7 @@ body::-webkit-scrollbar {
     max-width: 600px;
     margin: 0 auto;
 }
+
 .projects-grid > .project-card:last-child:nth-child(odd) {
     margin-left: auto;
     margin-right: auto;
