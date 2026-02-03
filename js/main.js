@@ -461,7 +461,7 @@ function applyZoom() {
 }
 
 // the audio system
-class AudioSystem {
+/* class AudioSystem {
     constructor() {
         this.tracks = [
             'audio/Audiomachine - The Truth.mp3',
@@ -743,11 +743,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // creates audio system if elements exist
-    new AudioSystem();
+    // new AudioSystem();
 });
+*/ 
 
 // adds click sound effect to buttons and links
-document.addEventListener('DOMContentLoaded', () => {
+/* document.addEventListener('DOMContentLoaded', () => {
     // preloads the click sound for better performance
     const clickSoundCache = new Audio('audio/click.mp3');
     clickSoundCache.volume = 0.1; // 10% volume for subtle effect
@@ -787,3 +788,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+*/
