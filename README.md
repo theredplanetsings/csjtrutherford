@@ -17,8 +17,8 @@ Built with HTML, CSS, and JavaScript featuring an interactive Three.js backgroun
 │   ├── three-grid.js      # Three.js animated grid background with mouse interaction
 │   └── three.module.js    # Three.js library module
 ├── audio/
-│   ├── ambient tracks     # Background music files for audio system
-│   └── click.mp3          # sound effect for interactive elements
+│   ├── ambient tracks     # Background music files for audio system **currently sidelined for simplicity**
+│   └── click.mp3          # sound effect for interactive element **currently sidelined for simplicity**
 ├── images/
 │   └── icons and assets   # visual assets and favicon collection
 ├── papers/
