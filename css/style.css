@@ -287,7 +287,6 @@ body::-webkit-scrollbar {
     background: #991b1b;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
 }
 
 .btn-secondary {
@@ -327,7 +326,6 @@ body::-webkit-scrollbar {
     background: #dc2626;
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.4);
 }
 
 @keyframes float {
@@ -559,7 +557,6 @@ body::-webkit-scrollbar {
 .experience-item:hover {
     border-color: rgba(220, 38, 38, 0.3);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
 }
 
 .experience-header {
@@ -1002,7 +999,6 @@ body::-webkit-scrollbar {
 .writing-item:hover {
     transform: translateY(-5px);
     border-color: rgba(220, 38, 38, 0.3);
-    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
 }
 
 .writing-header {
@@ -1159,7 +1155,6 @@ body::-webkit-scrollbar {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
 }
 
 .project-card.featured {
